@@ -309,7 +309,7 @@ function Convert-PresetLine {
         return "这是该职业新手的理想选项，尤其适合配合自动循环使用。"
     }
 
-    if ($Line -match '^Replaces (?<action>.+?) with a full one-button (?<body>.+?)\.$') {
+    if ($Line -match '^Replaces (?<action>.+?) with a full one-button (?<body>.+?)\.\s*$') {
         $action = & $translateFragment $Matches["action"]
         $body = $Matches["body"]
         $bodyMap = @{
@@ -337,6 +337,50 @@ function Convert-PresetLine {
         if ($bodyMap.ContainsKey($body)) {
             return "将 $action 替换为$($bodyMap[$body])。"
         }
+    }
+
+    if ($Line -match '^Includes (?<name>.+?) in the AoE rotation\.\s*$') {
+        return "将 $(& $translateFragment $Matches['name']) 纳入群体循环。"
+    }
+
+    if ($Line -match '^Includes (?<name>.+?) in the AoE rotation when (?<rest>.+?)\.\s*$') {
+        return "在 $(& $translateFragment $Matches['rest']) 时，将 $(& $translateFragment $Matches['name']) 纳入群体循环。"
+    }
+
+    if ($Line -match '^Includes (?<name>.+?) in the AoE rotation after (?<rest>.+?)\.\s*$') {
+        return "在 $(& $translateFragment $Matches['rest']) 之后，将 $(& $translateFragment $Matches['name']) 纳入群体循环。"
+    }
+
+    if ($Line -match '^Adds (?<name>.+?) into the AoE rotation when (?<rest>.+?)\.\s*$') {
+        return "在 $(& $translateFragment $Matches['rest']) 时，将 $(& $translateFragment $Matches['name']) 加入群体循环。"
+    }
+
+    if ($Line -match '^Adds (?<name>.+?) into the AoE rotation\.\s*$') {
+        return "将 $(& $translateFragment $Matches['name']) 加入群体循环。"
+    }
+
+    if ($Line -match '^Adds (?<name>.+?) to the AoE rotation when (?<rest>.+?)\.\s*$') {
+        return "在 $(& $translateFragment $Matches['rest']) 时，将 $(& $translateFragment $Matches['name']) 加入群体循环。"
+    }
+
+    if ($Line -match '^Adds (?<name>.+?) to the AoE rotation\.\s*$') {
+        return "将 $(& $translateFragment $Matches['name']) 加入群体循环。"
+    }
+
+    if ($Line -match '^Adds (?<name>.+?) to the AoE rotation when your target is casting, interruptible or not\.\s*$') {
+        return "当目标正在读条时，无论能否打断，都将 $(& $translateFragment $Matches['name']) 加入群体循环。"
+    }
+
+    if ($Line -match '^Adds (?<name>.+?) to the AoE rotation when your target''s cast is interruptible\.\s*$') {
+        return "当目标读条可打断时，将 $(& $translateFragment $Matches['name']) 加入群体循环。"
+    }
+
+    if ($Line -match '^Adds a (?<name>.+?) at the beginning of your AoE rotation\.\s*$') {
+        return "在群体循环开头加入 $(& $translateFragment $Matches['name'])。"
+    }
+
+    if ($Line -match '^Include all dance steps, and (?<name>.+?), and optionally (?<name2>.+?), in the AoE rotation\.\s*$') {
+        return "将全部舞步，以及 $(& $translateFragment $Matches['name'])，并可选加入 $(& $translateFragment $Matches['name2'])，纳入群体循环。"
     }
 
     if ($Line -match '^Replaces (?<action>.+?) with options below\.?$') {

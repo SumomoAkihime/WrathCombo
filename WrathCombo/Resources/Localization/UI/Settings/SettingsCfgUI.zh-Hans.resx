@@ -4,29 +4,249 @@
   <resheader name="version"><value>2.0</value></resheader>
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
-  <data name="HelpText_Retargetting1" xml:space="preserve"><value>启用后，此功能会涉及动作重定向。</value></data>
-  <data name="HelpText_Retargetting2" xml:space="preserve"><value>该功能影响的动作会自动
-按你配置的优先级
-选择目标。</value></data>
-  <data name="HelpText_Retargetting3" xml:space="preserve"><value>如果使用 Redirect、Reaction 等插件，
-并且它们也会影响同一批动作，就会发生冲突并可能产生问题。</value></data>
-  <data name="Info_searchHintText" xml:space="preserve"><value>分类名称、设置名称、内部名称等</value></data>
-  <data name="Label_searchLabelText" xml:space="preserve"><value>搜索：</value></data>
-  <data name="Button_CreateDebug" xml:space="preserve"><value>生成调试文件</value></data>
-  <data name="HelpText_CreateDebug" xml:space="preserve"><value>将在桌面生成一个调试文件。
-可提供给开发者以协助排查问题。
-等同于使用以下命令：`/wrath debug`</value></data>
-  <data name="Header_SettingsAbout" xml:space="preserve"><value>此页面可用于自定义 Wrath Combo 的全局设置。</value></data>
-  <data name="Text_RecommendedValue" xml:space="preserve"><value>推荐值：</value></data>
-  <data name="Text_DefaultValue" xml:space="preserve"><value>默认值：</value></data>
-  <data name="Label_HealStack" xml:space="preserve"><value>当前治疗栈：</value></data>
-  <data name="HelpText_HealStack" xml:space="preserve"><value>这是 Wrath 尝试选择治疗目标的顺序。
-如果关闭了“重定向治疗动作”选项，它仅会作为检查生命值阈值的目标，用于决定不同治疗动作是否应显示在循环中。
-这意味着如果你自己的重定向方案（Redirect、Reaction 等）与这里不一致，Wrath 可能会陷入一直治疗错误目标的循环！
-如果启用了“重定向治疗动作”，那么这里的目标也会成为实际施放治疗动作的对象（即使该动作并不会先检查该目标的生命值，例如被连招替换出来的动作）。</value></data>
-  <data name="Warning_HealStack" xml:space="preserve"><value>请你自己确保所使用的重定向方案与该治疗栈一致！
-否则 Wrath 可能会陷入循环：检查的是 X 玩家需要治疗，但实际治疗到的却是 Y 玩家！</value></data>
-  <data name="Label_RaiseStack" xml:space="preserve"><value>当前复活栈：</value></data>
-  <data name="HelpText_RaiseStack" xml:space="preserve"><value>这是 Wrath 在启用任意复活功能重定向时，
-尝试选择复活目标的顺序。</value></data>
+  <data name="ActionChanging_defaultValue" xml:space="preserve"><value>开</value></data>
+  <data name="ActionChanging_helpMark" xml:space="preserve"><value>控制是否用插件中的连招来替换你热键栏上的动作。
+关闭后，你手动按下技能时将不再受到任何 Wrath 设置影响。
+
+无论该设置如何，自动循环依然可以工作。</value></data>
+  <data name="ActionChanging_Name" xml:space="preserve"><value>动作替换</value></data>
+  <data name="ActionChanging_recommendedValue" xml:space="preserve"><value>开（关闭它基本等于关掉 Wrath 的大部分功能）</value></data>
+  <data name="ActionChanging_warningMark" xml:space="preserve"><value>Wrath 的大部分设计都基于动作替换。
+若关闭此项，则只有自动循环可用。
+关闭它还可能导致异常行为，例如重定向相关问题。</value></data>
+  <data name="AddOutOfPartyNPCsToRetargeting_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="AddOutOfPartyNPCsToRetargeting_helpMark" xml:space="preserve"><value>将不在队伍中的 NPC 也纳入治疗动作的重定向逻辑。
+
+适合想要治疗非队伍 NPC（例如任务 NPC）的治疗玩家。
+这些 NPC 通常无法与基于职责的自定义治疗栈条目良好配合
+（即使某个 NPC 看起来像坦克，也不一定被系统归类为坦克）。</value></data>
+  <data name="AddOutOfPartyNPCsToRetargeting_Name" xml:space="preserve"><value>将队外 NPC 加入重定向</value></data>
+  <data name="AddOutOfPartyNPCsToRetargeting_recommendedValue" xml:space="preserve"><value>开（如果你会使用重定向）</value></data>
+  <data name="BlockSpellOnMove_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="BlockSpellOnMove_helpMark" xml:space="preserve"><value>移动时会完全阻止动作，将连招输出替换为“狂怒剑”。
+这会覆盖很多职业自身带有的移动选项。</value></data>
+  <data name="BlockSpellOnMove_Name" xml:space="preserve"><value>移动时阻止施法</value></data>
+  <data name="BlockSpellOnMove_recommendedValue" xml:space="preserve"><value>关（大多数职业自己的功能会处理得更好）</value></data>
+  <data name="CustomHealStack_defaultValue" xml:space="preserve"><value>焦点目标 &gt; 硬目标 &gt; 自身</value></data>
+  <data name="CustomHealStack_helpMark" xml:space="preserve"><value>如果条目少于 4 个，且全部检查后都无结果，则会回退到自身。
+
+这些目标只有在友方且位于 25y 内时才会被视为有效。
+
+例如用于康复时，这些目标会被检查是否带有可驱散减益等。
+因此通常不需要再额外添加“任意可驱散队友”之类的条目。</value></data>
+  <data name="CustomHealStack_Name" xml:space="preserve"><value>自定义治疗栈</value></data>
+  <data name="CustomHealStack_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="EnabledOutputLog_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="EnabledOutputLog_helpMark" xml:space="preserve"><value>每次使用 Wrath 提供的动作时，都会在聊天栏输出日志。</value></data>
+  <data name="EnabledOutputLog_Name" xml:space="preserve"><value>聊天栏输出日志</value></data>
+  <data name="EnabledOutputLog_recommendedValue" xml:space="preserve"><value>开（如果你正在反馈问题）</value></data>
+  <data name="HideChildren_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="HideChildren_helpMark" xml:space="preserve"><value>隐藏已禁用连招下方的子功能和选项。</value></data>
+  <data name="HideChildren_Name" xml:space="preserve"><value>隐藏子连招选项</value></data>
+  <data name="HideChildren_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="HideConflictedCombos_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="HideConflictedCombos_helpMark" xml:space="preserve"><value>隐藏与你已启用连招冲突的连招。</value></data>
+  <data name="HideConflictedCombos_Name" xml:space="preserve"><value>隐藏冲突连招</value></data>
+  <data name="HideConflictedCombos_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="HideMessageOfTheDay_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="HideMessageOfTheDay_helpMark" xml:space="preserve"><value>登录时不再在聊天栏显示每日消息。</value></data>
+  <data name="HideMessageOfTheDay_Name" xml:space="preserve"><value>隐藏每日消息</value></data>
+  <data name="HideMessageOfTheDay_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="InterruptDelay_defaultValue" xml:space="preserve"><value>0</value></data>
+  <data name="InterruptDelay_helpMark" xml:space="preserve"><value>控制在打断敌方读条前等待的施法总时长百分比。
+适用于所有职业连招中的打断技能（包括用于打断的眩晕）。</value></data>
+  <data name="InterruptDelay_Name" xml:space="preserve"><value>打断延迟</value></data>
+  <data name="InterruptDelay_recommendedValue" xml:space="preserve"><value>低于 40（再高会开始错过许多短读条）</value></data>
+  <data name="InterruptDelay_unitLabel" xml:space="preserve"><value>施法百分比</value></data>
+  <data name="MaximumWeavesPerWindow_defaultValue" xml:space="preserve"><value>2</value></data>
+  <data name="MaximumWeavesPerWindow_helpMark" xml:space="preserve"><value>控制两个 GCD 之间允许插入多少个能力技。
+游戏里的“默认”情况通常是双插，但如果延迟足够低，三插也是完全可能的；反过来，如果你的延迟较高，甚至单插都可能更适合你。
+三插的实现已经尽量避免裁剪 GCD，因此即使在低延迟下也不会频繁发生；如果你想这么设置，它也是一个安全的选项。</value></data>
+  <data name="MaximumWeavesPerWindow_Name" xml:space="preserve"><value>最大插能力次数</value></data>
+  <data name="MaximumWeavesPerWindow_recommendedValue" xml:space="preserve"><value>2-3</value></data>
+  <data name="MaximumWeavesPerWindow_unitLabel" xml:space="preserve"><value>能力技数量</value></data>
+  <data name="MeleeOffset_defaultValue" xml:space="preserve"><value>0</value></data>
+  <data name="MeleeOffset_helpMark" xml:space="preserve"><value>控制怎样的距离会被视为近战范围。
+主要适合那些不想因为 Boss 稍微走出一点点范围就切到远程动作的玩家。
+例如设置为 -0.5，表示你必须比平时再靠近 0.5 码；
+设置为 2，则表示你可以离目标多 2 码仍被视为近战范围
+（近战技能本身未必能成功施放，但至少会给你一点缓冲，而不是突然开始打出更差的动作）。</value></data>
+  <data name="MeleeOffset_Name" xml:space="preserve"><value>近战距离偏移</value></data>
+  <data name="MeleeOffset_recommendedValue" xml:space="preserve"><value>0</value></data>
+  <data name="MeleeOffset_unitLabel" xml:space="preserve"><value>码</value></data>
+  <data name="MovementLeeway_defaultValue" xml:space="preserve"><value>0</value></data>
+  <data name="MovementLeeway_helpMark" xml:space="preserve"><value>控制 Wrath 识别你正在移动前所需的延迟时间。
+这样可以避免细小位移影响循环，尤其对法系职业更有帮助。</value></data>
+  <data name="MovementLeeway_Name" xml:space="preserve"><value>移动检测延迟</value></data>
+  <data name="MovementLeeway_recommendedValue" xml:space="preserve"><value>0.0-1.0（再高就可能破坏职业内的移动选项）</value></data>
+  <data name="MovementLeeway_unitLabel" xml:space="preserve"><value>秒</value></data>
+  <data name="OpenerTimeout_defaultValue" xml:space="preserve"><value>4</value></data>
+  <data name="OpenerTimeout_helpMark" xml:space="preserve"><value>控制开场中允许出现多长时间的无动作空档；超过该时间则判定为开场失败并恢复正常循环。
+某些法系职业可能需要调高，尤其是开场第一个动作需要硬读条时。</value></data>
+  <data name="OpenerTimeout_Name" xml:space="preserve"><value>开场失败超时</value></data>
+  <data name="OpenerTimeout_recommendedValue" xml:space="preserve"><value>4.0-7.0（更高会严重干扰开场）</value></data>
+  <data name="OpenerTimeout_unitLabel" xml:space="preserve"><value>秒</value></data>
+  <data name="OpenToCurrentJobOnSwitch_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="OpenToCurrentJobOnSwitch_helpMark" xml:space="preserve"><value>切换职业时，自动将 PvE 功能页切到你当前使用的职业。</value></data>
+  <data name="OpenToCurrentJobOnSwitch_Name" xml:space="preserve"><value>切职业时打开当前职业的 PvE 功能页</value></data>
+  <data name="OpenToCurrentJobOnSwitch_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="OpenToCurrentJob_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="OpenToCurrentJob_helpMark" xml:space="preserve"><value>打开 PvE 功能页时，会自动跳到你当前职业。</value></data>
+  <data name="OpenToCurrentJob_Name" xml:space="preserve"><value>打开时跳到当前职业的 PvE 功能页</value></data>
+  <data name="OpenToCurrentJob_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="OpenToPvE_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="OpenToPvE_helpMark" xml:space="preserve"><value>使用 `/wrath` 打开 Wrath 时，会直接进入 PvE 功能页，而不是上次停留的页面。
+效果等同于始终使用 `/wrath pve` 命令打开。</value></data>
+  <data name="OpenToPvE_Name" xml:space="preserve"><value>打开 Wrath 时进入 PvE 功能页</value></data>
+  <data name="OpenToPvE_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="OpenToPvP_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="OpenToPvP_helpMark" xml:space="preserve"><value>同上，在 PvP 区域使用 `/wrath` 打开 Wrath 时，会进入 PvP 功能页，而不是上次停留的页面。
+效果类似于使用 `/wrath pvp` 命令打开。</value></data>
+  <data name="OpenToPvP_Name" xml:space="preserve"><value>在 PvP 区域打开 Wrath 时进入 PvP 功能页</value></data>
+  <data name="OpenToPvP_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="OutputOpenerLogs_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="OutputOpenerLogs_helpMark" xml:space="preserve"><value>将当前职业开场的状态输出到聊天栏。
+例如：已就绪、失败、完成。</value></data>
+  <data name="OutputOpenerLogs_Name" xml:space="preserve"><value>聊天栏输出开场状态</value></data>
+  <data name="OutputOpenerLogs_recommendedValue" xml:space="preserve"><value>开（如果你正在排查开场问题）</value></data>
+  <data name="OverwriteQueue_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="OverwriteQueue_helpMark" xml:space="preserve"><value>允许你用另一个动作覆盖当前已排队的动作。</value></data>
+  <data name="OverwriteQueue_Name" xml:space="preserve"><value>覆盖队列</value></data>
+  <data name="OverwriteQueue_recommendedValue" xml:space="preserve"><value>开</value></data>
+  <data name="QueueAdjustThreshold_defaultValue" xml:space="preserve"><value>1.5</value></data>
+  <data name="QueueAdjustThreshold_helpMark" xml:space="preserve"><value>允许在 GCD 剩余小于等于该时间时进行预输入。</value></data>
+  <data name="QueueAdjustThreshold_Name" xml:space="preserve"><value>允许预输入的剩余时间</value></data>
+  <data name="QueueAdjustThreshold_recommendedValue" xml:space="preserve"><value>1.5-2.5</value></data>
+  <data name="QueueAdjustThreshold_unitLabel" xml:space="preserve"><value>秒</value></data>
+  <data name="QueueAdjustThreshold_warningMark" xml:space="preserve"><value>若设得太低甚至为 0，会让手动预输入变得非常困难。</value></data>
+  <data name="QueueAdjust_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="QueueAdjust_helpMark" xml:space="preserve"><value>允许你把预输入窗口调整到 GCD 中的任意时段，而不是只限于最后 0.3-0.5 秒。适合不喜欢狂按按键，或在自动循环运行时希望手动插手的情况。</value></data>
+  <data name="QueueAdjust_Name" xml:space="preserve"><value>自定义手动预输入窗口</value></data>
+  <data name="QueueAdjust_recommendedValue" xml:space="preserve"><value>开</value></data>
+  <data name="RaiseStack_defaultValue" xml:space="preserve"><value>任意治疗 &gt; 任意坦克 &gt; 任意可复活职业 &gt; 任意阵亡队友</value></data>
+  <data name="RaiseStack_extraText" xml:space="preserve"><value>（所有目标都会先检查是否可被复活）</value></data>
+  <data name="RaiseStack_helpMark" xml:space="preserve"><value>这是 Wrath 在启用任意复活功能重定向时，
+尝试选择复活目标的顺序。
+
+你可以在 PvE&gt;通用，
+或各个拥有复活技能的法系职业页中找到相关功能。
+
+如果条目少于 5 个，且全部检查后都无结果，则会回退到：
+若你的硬目标已阵亡则优先硬目标，否则回退到&lt;任意阵亡队友&gt;。
+
+这些目标只有在友方、已阵亡且位于 30y 内时才会被视为有效。</value></data>
+  <data name="RaiseStack_Name" xml:space="preserve"><value>自定义复活栈</value></data>
+  <data name="RaiseStack_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="RetargetHealingActionsToStack_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="RetargetHealingActionsToStack_helpMark" xml:space="preserve"><value>会将所有单体治疗动作按下方显示的治疗栈进行重定向，
+效果类似于 Redirect 或 Reaction。
+这样可确保用于判断治疗阈值的目标，和真正吃到治疗的目标始终一致。</value></data>
+  <data name="RetargetHealingActionsToStack_Name" xml:space="preserve"><value>重定向（单体）治疗动作</value></data>
+  <data name="RetargetHealingActionsToStack_recommendedValue" xml:space="preserve"><value>开（只要你对治疗栈做过任何自定义）</value></data>
+  <data name="ShortDTRText_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="ShortDTRText_helpMark" xml:space="preserve"><value>隐藏当前启用的自动模式连招数量。
+默认情况下，服务器信息栏会显示：
+- 自动循环是否开启
+- （若开启）当前启用的自动模式连招数量
+- （如适用）是否有其他插件正在控制自动循环状态。</value></data>
+  <data name="ShortDTRText_Name" xml:space="preserve"><value>缩短服务器信息栏文本</value></data>
+  <data name="ShortDTRText_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="ShowBorderAroundOptionsWithChildren_defaultValue" xml:space="preserve"><value>开</value></data>
+  <data name="ShowBorderAroundOptionsWithChildren_helpMark" xml:space="preserve"><value>为拥有子功能和子选项的连招/功能绘制边框。</value></data>
+  <data name="ShowBorderAroundOptionsWithChildren_Name" xml:space="preserve"><value>为带子选项的连招和功能显示边框</value></data>
+  <data name="ShowBorderAroundOptionsWithChildren_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="ShowOpenerDtr_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="ShowOpenerDtr_helpMark" xml:space="preserve"><value>若已启用且适用，则在服务器信息栏显示当前开场状态。</value></data>
+  <data name="ShowOpenerDtr_Name" xml:space="preserve"><value>服务器信息栏显示开场状态</value></data>
+  <data name="ShowOpenerDtr_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="ShowTargetHighlight_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="ShowTargetHighlight_extraText" xml:space="preserve"><value>（目前仅 AST 和 DNC 会使用）</value></data>
+  <data name="ShowTargetHighlight_helpMark" xml:space="preserve"><value>在原版队伍列表中，为被某些功能选中的队友绘制高亮框。</value></data>
+  <data name="ShowTargetHighlight_Name" xml:space="preserve"><value>显示目标高亮</value></data>
+  <data name="ShowTargetHighlight_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="SuppressAutorotCommand_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="SuppressAutorotCommand_helpMark" xml:space="preserve"><value>隐藏 `/wrath auto` 命令的聊天反馈。</value></data>
+  <data name="SuppressAutorotCommand_Name" xml:space="preserve"><value>隐藏自动循环命令反馈</value></data>
+  <data name="SuppressAutorotCommand_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="SuppressSetCommands_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="SuppressSetCommands_helpMark" xml:space="preserve"><value>隐藏 `/wrath set` 和 `/wrath unset` 命令的聊天反馈。
+（若命令被 IPC 覆盖，或执行失败，仍会显示反馈）</value></data>
+  <data name="SuppressSetCommands_Name" xml:space="preserve"><value>隐藏 set / unset 命令反馈</value></data>
+  <data name="SuppressSetCommands_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="TargetHighlightColor_defaultValue" xml:space="preserve"><value>#808080FF</value></data>
+  <data name="TargetHighlightColor_helpMark" xml:space="preserve"><value>控制队友高亮框的颜色。</value></data>
+  <data name="TargetHighlightColor_Name" xml:space="preserve"><value>目标高亮颜色</value></data>
+  <data name="TargetHighlightColor_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="Throttle_defaultValue" xml:space="preserve"><value>50</value></data>
+  <data name="Throttle_helpMark" xml:space="preserve"><value>限制连招更新热键栏动作的频率。
+在 50ms 时几乎不会造成限制，动作始终比较及时。
+
+如果你想换取一点点 FPS 提升，可以适当提高这个值，让连招更新得更少。
+但这会让连招响应变慢，甚至裁剪 GCD。
+当数值很高时，可能会让你的 GCD 被裁掉数秒，甚至彻底打乱循环。</value></data>
+  <data name="Throttle_Name" xml:space="preserve"><value>动作更新节流</value></data>
+  <data name="Throttle_recommendedValue" xml:space="preserve"><value>20-200</value></data>
+  <data name="Throttle_unitLabel" xml:space="preserve"><value>毫秒</value></data>
+  <data name="UIShowPresetIDs_defaultValue" xml:space="preserve"><value>开</value></data>
+  <data name="UIShowPresetIDs_helpMark" xml:space="preserve"><value>在每个连招和功能名称旁显示预设 ID。
+这些 ID 可用于 `/wrath toggle &lt;ID&gt;` 之类的命令。
+7.3 之前这里也会显示数字，但更短，而且不能用于命令。</value></data>
+  <data name="UIShowPresetIDs_Name" xml:space="preserve"><value>在连招名称旁显示预设 ID</value></data>
+  <data name="UIShowPresetIDs_recommendedValue" xml:space="preserve"><value>开</value></data>
+  <data name="UIShowSearchBar_defaultValue" xml:space="preserve"><value>开</value></data>
+  <data name="UIShowSearchBar_helpMark" xml:space="preserve"><value>控制是否在设置页以及 PvE/PvP 职业页中显示搜索栏。</value></data>
+  <data name="UIShowSearchBar_Name" xml:space="preserve"><value>显示搜索栏</value></data>
+  <data name="UIShowSearchBar_recommendedValue" xml:space="preserve"><value>开</value></data>
+  <data name="UseCustomHealStack_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="UseCustomHealStack_helpMark" xml:space="preserve"><value>如果你想自己定义治疗目标的优先级栈，而不是使用默认治疗栈，请启用此项。
+
+如果你不打算使用上面的“重定向治疗动作”选项，建议把这里配置成与你的 Redirect/Reaction 一致；否则就看个人习惯。</value></data>
+  <data name="UseCustomHealStack_Name" xml:space="preserve"><value>改用自定义治疗栈</value></data>
+  <data name="UseCustomHealStack_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="UseFieldMouseoverOverridesInDefaultHealStack_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="UseFieldMouseoverOverridesInDefaultHealStack_helpMark" xml:space="preserve"><value>会把场景中的鼠标悬停目标加入默认治疗栈顶部；当你鼠标悬停在任意队友 UI 上时，它会覆盖治疗栈的其余部分。
+
+如果你使用键鼠，并且启用了“重定向治疗动作”（或在 Redirect/Reaction 中启用了 UI 鼠标悬停目标），建议开启此项。</value></data>
+  <data name="UseFieldMouseoverOverridesInDefaultHealStack_Name" xml:space="preserve"><value>将场景鼠标悬停加入默认治疗栈</value></data>
+  <data name="UseFieldMouseoverOverridesInDefaultHealStack_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="UseFocusTargetOverrideInDefaultHealStack_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="UseFocusTargetOverrideInDefaultHealStack_helpMark" xml:space="preserve"><value>会把焦点目标插入默认治疗栈中，位于硬目标和软目标之后；只要你的焦点目标存活，它就会覆盖其余栈逻辑。</value></data>
+  <data name="UseFocusTargetOverrideInDefaultHealStack_Name" xml:space="preserve"><value>将焦点目标加入默认治疗栈</value></data>
+  <data name="UseFocusTargetOverrideInDefaultHealStack_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="UseLowestHPOverrideInDefaultHealStack_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="UseLowestHPOverrideInDefaultHealStack_helpMark" xml:space="preserve"><value>会将附近生命百分比最低的队友加入默认治疗栈底部，仅覆盖你自己这一层。</value></data>
+  <data name="UseLowestHPOverrideInDefaultHealStack_Name" xml:space="preserve"><value>将最低生命%队友加入默认治疗栈</value></data>
+  <data name="UseLowestHPOverrideInDefaultHealStack_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="UseLowestHPOverrideInDefaultHealStack_warningMark" xml:space="preserve"><value>与其他 Default+ 选项不同，这个选项通常不在其他重定向插件中提供。
+如果要用它，请务必同时启用上方的“重定向治疗动作”！</value></data>
+  <data name="UseUIMouseoverOverridesInDefaultHealStack_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="UseUIMouseoverOverridesInDefaultHealStack_helpMark" xml:space="preserve"><value>会把 UI 鼠标悬停目标加入默认治疗栈顶部；当你鼠标悬停在任意队友 UI 上时，它会覆盖治疗栈的其余部分。
+
+如果你使用键鼠，并且启用了“重定向治疗动作”（或在 Redirect/Reaction 中启用了 UI 鼠标悬停目标），建议开启此项。</value></data>
+  <data name="UseUIMouseoverOverridesInDefaultHealStack_Name" xml:space="preserve"><value>将 UI 鼠标悬停加入默认治疗栈</value></data>
+  <data name="UseUIMouseoverOverridesInDefaultHealStack_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="MainUIOptions_Category" xml:space="preserve"><value>主界面选项</value></data>
+  <data name="RotationBehaviourOptions_Category" xml:space="preserve"><value>循环行为选项</value></data>
+  <data name="TargetingOptions_Category" xml:space="preserve"><value>选目标选项</value></data>
+  <data name="TroubleshootingOptions_Category" xml:space="preserve"><value>故障排查选项</value></data>
+  <data name="AprilFools2026_Name" xml:space="preserve"><value>2026 愚人节功能</value></data>
+  <data name="AprilFools2026_helpMark" xml:space="preserve"><value>适合那些怎么都看不够武僧插件内容的人。</value></data>
+  <data name="AprilFools2026_recommendedValue" xml:space="preserve"><value>关，除非你名字是 Beep 开头</value></data>
+  <data name="AprilFools2026_defaultValue" xml:space="preserve"><value>开，毕竟今天就是这种日子</value></data>
+  <data name="TankbusterTTS_Name" xml:space="preserve"><value>死刑时播放 TTS</value></data>
+  <data name="TankbusterTTS_helpMark" xml:space="preserve"><value>检测到死刑时播放语音提示，并包含其目标。</value></data>
+  <data name="TankbusterTTS_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="TankbusterTTS_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="AoEDamageTTS_Name" xml:space="preserve"><value>团队伤害时播放 TTS</value></data>
+  <data name="AoEDamageTTS_helpMark" xml:space="preserve"><value>检测到分摊/全团伤害读条时播放语音提示，若适用还会包含其目标。</value></data>
+  <data name="AoEDamageTTS_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="AoEDamageTTS_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="TankbusterToast_Name" xml:space="preserve"><value>死刑时显示 Toast</value></data>
+  <data name="TankbusterToast_helpMark" xml:space="preserve"><value>检测到死刑时在屏幕上显示提示，并包含其目标。</value></data>
+  <data name="TankbusterToast_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="TankbusterToast_defaultValue" xml:space="preserve"><value>关</value></data>
+  <data name="AoEDamageToast_Name" xml:space="preserve"><value>团队伤害时显示 Toast</value></data>
+  <data name="AoEDamageToast_helpMark" xml:space="preserve"><value>检测到分摊/全团伤害读条时在屏幕上显示提示，若适用还会包含其目标。</value></data>
+  <data name="AoEDamageToast_recommendedValue" xml:space="preserve"><value>按个人习惯</value></data>
+  <data name="AoEDamageToast_defaultValue" xml:space="preserve"><value>关</value></data>
 </root>

@@ -1977,13 +1977,13 @@ This mode is ideal if you want to customize the rotation.</value>
     <value>进阶模式 - 群体</value>
   </data>
   <data name="DNC_AoE_Adv_DawnDance_Desc" xml:space="preserve">
-    <value>Includes 剑舞 of the 仙光的低语 in the AoE rotation after Saber 剑舞 and when over the threshold, or in the final seconds of 剑舞 of the 仙光的低语 ready.</value>
+    <value>在 Saber 剑舞 and when over the threshold, or in the final seconds of 剑舞 of the 仙光的低语 ready 之后，将 剑舞 of the 仙光的低语 纳入群体循环。</value>
   </data>
   <data name="DNC_AoE_Adv_DawnDance_Name" xml:space="preserve">
     <value>剑舞 of the 仙光的低语 选项</value>
   </data>
   <data name="DNC_AoE_Adv_Devilment_Desc" xml:space="preserve">
-    <value>Includes 进攻之探戈 in the AoE rotation.
+    <value>将 进攻之探戈 纳入群体循环。
 钢铁信念 activate only during Technical 四色技巧舞步结束 if you're Lv70 or above.
 钢铁信念 be used on cooldown below Lv70.</value>
   </data>
@@ -2017,19 +2017,19 @@ Weaves feathers whenever available when under Lv.70.</value>
     <value>天使之羽 选项</value>
   </data>
   <data name="DNC_AoE_Adv_Flourish_Desc" xml:space="preserve">
-    <value>Includes 百花争艳 in the AoE rotation.</value>
+    <value>将 百花争艳 纳入群体循环。</value>
   </data>
   <data name="DNC_AoE_Adv_Flourish_Name" xml:space="preserve">
     <value>百花争艳 选项</value>
   </data>
   <data name="DNC_AoE_Adv_FM_Desc" xml:space="preserve">
-    <value>Includes Finishing 结束动作 in the AoE rotation.</value>
+    <value>将 Finishing 结束动作 纳入群体循环。</value>
   </data>
   <data name="DNC_AoE_Adv_FM_Name" xml:space="preserve">
     <value>Finishing 结束动作 选项</value>
   </data>
   <data name="DNC_AoE_Adv_Improvisation_Desc" xml:space="preserve">
-    <value>Includes 即兴表演 in the AoE rotation when available.
+    <value>在 available 时，将 即兴表演 纳入群体循环。
 钢铁信念 not use while under Technical 四色技巧舞步结束</value>
   </data>
   <data name="DNC_AoE_Adv_Improvisation_Name" xml:space="preserve">
@@ -2048,7 +2048,7 @@ Weaves feathers whenever available when under Lv.70.</value>
     <value>Last 剑舞 选项</value>
   </data>
   <data name="DNC_AoE_Adv_PanicHeals_Desc" xml:space="preserve">
-    <value>Includes Curing 神秘华尔兹 and 内丹 in the AoE rotation when available and your HP is below the set percentages.</value>
+    <value>在 available and your HP is below the set percentages 时，将 Curing 神秘华尔兹 and 内丹 纳入群体循环。</value>
   </data>
   <data name="DNC_AoE_Adv_PanicHeals_Name" xml:space="preserve">
     <value>Panic Heals 选项</value>
@@ -2060,14 +2060,14 @@ Weaves feathers whenever available when under Lv.70.</value>
     <value>剑舞 Partner Reminder 选项</value>
   </data>
   <data name="DNC_AoE_Adv_SaberDance_Desc" xml:space="preserve">
-    <value>Includes Saber 剑舞 in the AoE rotation when at or over the Esprit threshold.
+    <value>在 at or over the Esprit threshold 时，将 Saber 剑舞 纳入群体循环。
 (And to prevent overcapping while under Technical 四色技巧舞步结束)</value>
   </data>
   <data name="DNC_AoE_Adv_SaberDance_Name" xml:space="preserve">
     <value>Saber 剑舞 选项</value>
   </data>
   <data name="DNC_AoE_Adv_SS_Desc" xml:space="preserve">
-    <value>Include all dance steps, and 四色技巧舞步结束, and optionally 标准舞步, in the AoE rotation.</value>
+    <value>将全部舞步，以及 四色技巧舞步结束，并可选加入 标准舞步，纳入群体循环。</value>
   </data>
   <data name="DNC_AoE_Adv_SS_Name" xml:space="preserve">
     <value>Standard 剑舞 选项</value>
@@ -2079,7 +2079,7 @@ Weaves feathers whenever available when under Lv.70.</value>
     <value>提拉纳 选项</value>
   </data>
   <data name="DNC_AoE_Adv_TS_Desc" xml:space="preserve">
-    <value>Include all dance steps, and 四色技巧舞步结束, and optionally 技巧舞步, in the AoE rotation.</value>
+    <value>将全部舞步，以及 四色技巧舞步结束，并可选加入 技巧舞步，纳入群体循环。</value>
   </data>
   <data name="DNC_AoE_Adv_TS_Name" xml:space="preserve">
     <value>Technical 剑舞 选项</value>
@@ -3535,7 +3535,7 @@ Not advised outside of overworld content, as it can waste a lot of Low Blows on 
     <value>群体基础连招</value>
   </data>
   <data name="GNB_AoE_Bloodfest_Desc" xml:space="preserve">
-    <value>Adds 血壤 into the AoE rotation when appropriate.</value>
+    <value>在 appropriate 时，将 血壤 加入群体循环。</value>
   </data>
   <data name="GNB_AoE_Bloodfest_Name" xml:space="preserve">
     <value>血壤 选项</value>
@@ -3547,13 +3547,13 @@ Not advised outside of overworld content, as it can waste a lot of Low Blows on 
     <value>弓形冲波 选项</value>
   </data>
   <data name="GNB_AoE_DoubleDown_Desc" xml:space="preserve">
-    <value>Adds 倍攻 into the AoE rotation when appropriate.</value>
+    <value>在 appropriate 时，将 倍攻 加入群体循环。</value>
   </data>
   <data name="GNB_AoE_DoubleDown_Name" xml:space="preserve">
     <value>倍攻 选项</value>
   </data>
   <data name="GNB_AoE_FatedCircle_Desc" xml:space="preserve">
-    <value>Adds 命运之环 into the AoE rotation when appropriate.</value>
+    <value>在 appropriate 时，将 命运之环 加入群体循环。</value>
   </data>
   <data name="GNB_AoE_FatedCircle_Name" xml:space="preserve">
     <value>命运之环 选项</value>
@@ -3565,13 +3565,13 @@ Not advised outside of overworld content, as it can waste a lot of Low Blows on 
     <value>打断 选项</value>
   </data>
   <data name="GNB_AoE_NoMercy_Desc" xml:space="preserve">
-    <value>Adds 无情 into the AoE rotation when appropriate.</value>
+    <value>在 appropriate 时，将 无情 加入群体循环。</value>
   </data>
   <data name="GNB_AoE_NoMercy_Name" xml:space="preserve">
     <value>无情 选项</value>
   </data>
   <data name="GNB_AoE_Reign_Desc" xml:space="preserve">
-    <value>Adds Reign/Noble/LionHeart into the AoE rotation when appropriate.</value>
+    <value>在 appropriate 时，将 Reign/Noble/LionHeart 加入群体循环。</value>
   </data>
   <data name="GNB_AoE_Reign_Name" xml:space="preserve">
     <value>Reign Combo 选项</value>
@@ -3584,7 +3584,7 @@ Not advised outside of overworld content, as it can waste a lot of Low Blows on 
     <value>简易模式 - 群体</value>
   </data>
   <data name="GNB_AoE_SonicBreak_Desc" xml:space="preserve">
-    <value>Adds Sonic 音速破 into the AoE rotation when appropriate.</value>
+    <value>在 appropriate 时，将 Sonic 音速破 加入群体循环。</value>
   </data>
   <data name="GNB_AoE_SonicBreak_Name" xml:space="preserve">
     <value>Sonic 音速破 选项</value>
@@ -3596,7 +3596,7 @@ Not advised outside of overworld content, as it can waste a lot of Low Blows on 
     <value>打断 with 冰结 选项</value>
   </data>
   <data name="GNB_AoE_Zone_Desc" xml:space="preserve">
-    <value>Adds Danger/爆破领域 into the AoE rotation when appropriate.</value>
+    <value>在 appropriate 时，将 Danger/爆破领域 加入群体循环。</value>
   </data>
   <data name="GNB_AoE_Zone_Name" xml:space="preserve">
     <value>Danger/爆破领域 选项</value>
@@ -6908,7 +6908,7 @@ Not advised outside of overworld content, as it can waste a lot of GCDs on un-st
     <value>飞刺 选项</value>
   </data>
   <data name="RDM_AoE_HolyFlare_Desc" xml:space="preserve">
-    <value>Adds 赤核爆 and 赤神圣 into the Aoe Rotation.</value>
+    <value>将 赤核爆 and 赤神圣 加入群体循环。</value>
   </data>
   <data name="RDM_AoE_HolyFlare_Name" xml:space="preserve">
     <value>赤核爆/赤神圣 选项</value>
@@ -6972,7 +6972,7 @@ To start the melee combo, you must be within melee range.</value>
     <value>即刻咏唱 选项</value>
   </data>
   <data name="RDM_AoE_ThunderAero_Desc" xml:space="preserve">
-    <value>Adds 赤震雷 and 赤疾风 2 into the Aoe Rotation.</value>
+    <value>将 赤震雷 and 赤疾风 2 加入群体循环。</value>
   </data>
   <data name="RDM_AoE_ThunderAero_Name" xml:space="preserve">
     <value>高闪雷/疾风 选项</value>
@@ -8976,7 +8976,7 @@ Even in the Standalone Features Above.</value>
     <value>活化 选项</value>
   </data>
   <data name="SGE_AoE_Simple_DPS_Desc" xml:space="preserve">
-    <value>Replaces 均衡失衡 with a full one-button AoE rotation. 
+    <value>将 均衡失衡 替换为完整的一键群体循环。
 这是该职业新手的理想选项。</value>
   </data>
   <data name="SGE_AoE_Simple_DPS_Name" xml:space="preserve">
@@ -9320,7 +9320,7 @@ Even in the Standalone Features Above.</value>
     <value>活化 选项</value>
   </data>
   <data name="SGE_ST_Simple_DPS_Desc" xml:space="preserve">
-    <value>Replaces 均衡注药 with a full one-button single target rotation. 
+    <value>将 均衡注药 替换为完整的一键单体循环。
 这是该职业新手的理想选项。</value>
   </data>
   <data name="SGE_ST_Simple_DPS_Name" xml:space="preserve">
@@ -10318,55 +10318,55 @@ Intended Mainly for 70 Ultimates where it would matter. (Not worth it for averag
     <value>Mythril 秘银暴风 Combo</value>
   </data>
   <data name="WAR_AoE_Decimate_Desc" xml:space="preserve">
-    <value>Adds Steel 深红旋风 / 地毁人亡 into the AoE rotation.</value>
+    <value>将 Steel 深红旋风 / 地毁人亡 加入群体循环。</value>
   </data>
   <data name="WAR_AoE_Decimate_Name" xml:space="preserve">
     <value>Steel 深红旋风 / 地毁人亡 选项</value>
   </data>
   <data name="WAR_AoE_Infuriate_Desc" xml:space="preserve">
-    <value>Adds 战嚎 into the AoE rotation.</value>
+    <value>将 战嚎 加入群体循环。</value>
   </data>
   <data name="WAR_AoE_Infuriate_Name" xml:space="preserve">
     <value>战嚎 选项</value>
   </data>
   <data name="WAR_AoE_InnerRelease_Desc" xml:space="preserve">
-    <value>Adds 狂暴 / 原初的解放 into the AoE rotation.</value>
+    <value>将 狂暴 / 原初的解放 加入群体循环。</value>
   </data>
   <data name="WAR_AoE_InnerRelease_Name" xml:space="preserve">
     <value>狂暴 / 原初的解放 选项</value>
   </data>
   <data name="WAR_AoE_Interrupt_Desc" xml:space="preserve">
-    <value>Adds 插言 to the AoE rotation when your target's cast is interruptible.</value>
+    <value>在 your target's cast is interruptible 时，将 插言 加入群体循环。</value>
   </data>
   <data name="WAR_AoE_Interrupt_Name" xml:space="preserve">
     <value>打断 选项</value>
   </data>
   <data name="WAR_AoE_Onslaught_Desc" xml:space="preserve">
-    <value>Adds 猛攻 into the AoE rotation.</value>
+    <value>将 猛攻 加入群体循环。</value>
   </data>
   <data name="WAR_AoE_Onslaught_Name" xml:space="preserve">
     <value>猛攻 选项</value>
   </data>
   <data name="WAR_AoE_Orogeny_Desc" xml:space="preserve">
-    <value>Adds 群山隆起 into the AoE rotation.</value>
+    <value>将 群山隆起 加入群体循环。</value>
   </data>
   <data name="WAR_AoE_Orogeny_Name" xml:space="preserve">
     <value>群山隆起 选项</value>
   </data>
   <data name="WAR_AoE_PrimalRend_Desc" xml:space="preserve">
-    <value>Adds 蛮荒崩裂 into the AoE rotation.</value>
+    <value>将 蛮荒崩裂 加入群体循环。</value>
   </data>
   <data name="WAR_AoE_PrimalRend_Name" xml:space="preserve">
     <value>蛮荒崩裂 选项</value>
   </data>
   <data name="WAR_AoE_PrimalRuination_Desc" xml:space="preserve">
-    <value>Adds 尽毁 into the AoE rotation.</value>
+    <value>将 尽毁 加入群体循环。</value>
   </data>
   <data name="WAR_AoE_PrimalRuination_Name" xml:space="preserve">
     <value>尽毁 选项</value>
   </data>
   <data name="WAR_AoE_PrimalWrath_Desc" xml:space="preserve">
-    <value>Adds 原初的怒震 into the AoE rotation.</value>
+    <value>将 原初的怒震 加入群体循环。</value>
   </data>
   <data name="WAR_AoE_PrimalWrath_Name" xml:space="preserve">
     <value>原初的怒震 选项</value>
@@ -10385,7 +10385,7 @@ Intended Mainly for 70 Ultimates where it would matter. (Not worth it for averag
     <value>简易模式 - 群体</value>
   </data>
   <data name="WAR_AoE_Stun_Desc" xml:space="preserve">
-    <value>Adds 下踢 to the AoE rotation when your target is casting, interruptible or not.</value>
+    <value>在 your target is casting, interruptible or not 时，将 下踢 加入群体循环。</value>
   </data>
   <data name="WAR_AoE_Stun_Name" xml:space="preserve">
     <value>打断 with 冰结 选项</value>
@@ -11006,7 +11006,7 @@ Upgrades to 医治 激荡 when level allows.</value>
     <value>Presence of 弃明投暗 选项</value>
   </data>
   <data name="WHM_AoE_DPS_SwiftHoly_Desc" xml:space="preserve">
-    <value>Adds a 即刻咏唱-&gt;神圣 at the beginning of your AoE rotation.
+    <value>在群体循环开头加入 即刻咏唱-&gt;神圣。
 Requires you to already be in combat, to have stopped moving, and to not have used 法令 yet.</value>
   </data>
   <data name="WHM_AoE_DPS_SwiftHoly_Name" xml:space="preserve">
@@ -11019,7 +11019,7 @@ Requires you to already be in combat, to have stopped moving, and to not have us
     <value>Multitarget Dot 选项</value>
   </data>
   <data name="WHM_AoE_Simple_DPS_Desc" xml:space="preserve">
-    <value>Replaces 神圣 with a full one-button AoE rotation. 
+    <value>将 神圣 替换为完整的一键群体循环。
 这是该职业新手的理想选项。</value>
   </data>
   <data name="WHM_AoE_Simple_DPS_Name" xml:space="preserve">
@@ -11331,7 +11331,7 @@ Solace 可以通过下方的重定向功能进行重定向。</value>
     <value>Presence of 弃明投暗 选项</value>
   </data>
   <data name="WHM_ST_Simple_DPS_Desc" xml:space="preserve">
-    <value>Replaces 石之心 with a full one-button single target rotation. 
+    <value>将 石之心 替换为完整的一键单体循环。
 这是该职业新手的理想选项。</value>
   </data>
   <data name="WHM_ST_Simple_DPS_Name" xml:space="preserve">
