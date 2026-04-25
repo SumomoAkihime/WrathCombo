@@ -1,4 +1,4 @@
-name: Build WrathCombo Plugin Package
+name: Build WrathCombo Plugin Packages
 
 on:
   workflow_dispatch:
@@ -70,4 +70,97 @@ jobs:
         with:
           name: WrathCombo-package
           path: ${{ env.PACKAGE_ZIP }}
+          if-no-files-found: error
+
+  build-cn-plugin:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+          dotnet-quality: preview
+
+      - name: Setup STG Dalamud
+        shell: pwsh
+        run: |
+          $dalamudHome = Join-Path $env:APPDATA 'XIVLauncher\addon\Hooks\dev'
+          curl.exe -L https://goatcorp.github.io/dalamud-distrib/stg/latest.zip -o dalamud.zip
+          New-Item -Path $dalamudHome -ItemType Directory -Force | Out-Null
+          Expand-Archive -Force dalamud.zip -DestinationPath $dalamudHome
+
+      - name: Restore
+        run: dotnet restore $env:PROJECT_PATH
+
+      - name: Build CN variant
+        run: dotnet build $env:PROJECT_PATH -c Release --no-restore -p:ContinuousIntegrationBuild=true -p:AssemblyName=WrathComboCN -p:OutputPath=bin\ReleaseCN\
+
+      - name: Locate CN package output
+        shell: pwsh
+        run: |
+          $zip = Get-ChildItem -Path $env:GITHUB_WORKSPACE -Recurse -Filter latest.zip |
+            Where-Object { $_.FullName -match 'ReleaseCN|WrathComboCN' } |
+            Sort-Object LastWriteTimeUtc -Descending |
+            Select-Object -First 1
+
+          if (-not $zip) {
+            Write-Host 'No CN latest.zip was produced.'
+            Get-ChildItem -Path $env:GITHUB_WORKSPACE -Recurse | Select-Object FullName
+            exit 1
+          }
+
+          Write-Host "CN package before patch: $($zip.FullName)"
+          "CN_PACKAGE_ZIP=$($zip.FullName)" >> $env:GITHUB_ENV
+
+      - name: Patch CN package metadata
+        shell: pwsh
+        run: |
+          Add-Type -AssemblyName System.IO.Compression.FileSystem
+          $zipPath = $env:CN_PACKAGE_ZIP
+          $tempDir = Join-Path $env:RUNNER_TEMP 'WrathComboCN'
+          if (Test-Path $tempDir) { Remove-Item $tempDir -Recurse -Force }
+          [System.IO.Compression.ZipFile]::ExtractToDirectory($zipPath, $tempDir)
+
+          $manifest = Get-ChildItem $tempDir -File -Filter *.json | Where-Object { $_.Name -notlike '*.deps.json' } | Select-Object -First 1
+          if (-not $manifest) { throw 'Could not find plugin manifest in CN package.' }
+
+          $manifestObject = Get-Content $manifest.FullName -Raw | ConvertFrom-Json
+          $oldInternalName = [string]$manifestObject.InternalName
+          $newInternalName = 'WrathComboCN'
+          $manifestObject.Name = 'Wrath Combo CN'
+          $manifestObject.InternalName = $newInternalName
+          $manifestObject.RepoUrl = 'https://github.com/SumomoAkihime/WrathCombo'
+          $manifestObject.Description = 'CN variant of Wrath Combo, packaged from the synced upstream source.'
+          $manifestObject.Punchline = 'Wrath Combo CN build from synced upstream source.'
+
+          $newManifestPath = Join-Path $tempDir "$newInternalName.json"
+          $manifestObject | ConvertTo-Json -Depth 6 | Set-Content -Path $newManifestPath -Encoding UTF8
+          if ($manifest.FullName -ne $newManifestPath -and (Test-Path $manifest.FullName)) {
+            Remove-Item $manifest.FullName -Force
+          }
+
+          foreach ($suffix in @('.dll', '.deps.json', '.pdb')) {
+            $oldPath = Join-Path $tempDir "$oldInternalName$suffix"
+            $newPath = Join-Path $tempDir "$newInternalName$suffix"
+            if ((Test-Path $oldPath) -and ($oldPath -ne $newPath)) {
+              Move-Item -LiteralPath $oldPath -Destination $newPath -Force
+            }
+          }
+
+          $newZipPath = Join-Path $env:RUNNER_TEMP 'WrathComboCN-latest.zip'
+          if (Test-Path $newZipPath) { Remove-Item $newZipPath -Force }
+          [System.IO.Compression.ZipFile]::CreateFromDirectory($tempDir, $newZipPath)
+          "CN_PATCHED_ZIP=$newZipPath" >> $env:GITHUB_ENV
+
+      - name: Upload CN package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: WrathComboCN-package
+          path: ${{ env.CN_PATCHED_ZIP }}
           if-no-files-found: error
