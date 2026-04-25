@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Hover_AutoMode" xml:space="preserve"><value>将此功能加入自动循环。
+启用后，自动循环会自动使用该功能中选定的动作，让你可以更专注于走位。相关设置可在“自动循环”页面中调整。</value></data>
+  <data name="Hover_Retargetting_ControllingSetting" xml:space="preserve"><value>控制此动作是否进行重定向的设置是：</value></data>
+  <data name="Hover_Retargetting_IsRetargetted" xml:space="preserve"><value>此功能的动作会被重定向</value></data>
+  <data name="Hover_Retargetting_Line2" xml:space="preserve"><value>此功能中的动作会自动
+以开发者认为最合适的目标为准
+进行选取（适用时会参考 The Balance）。</value></data>
+  <data name="Hover_Retargetting_Line3" xml:space="preserve"><value>如果使用 Redirect、Reaction 等插件，
+且其配置也会影响这些动作，就会产生冲突并可能导致问题。</value></data>
+  <data name="Hover_Retargetting_MaybeRetargetted" xml:space="preserve"><value>此功能的动作可能会被重定向。</value></data>
+  <data name="Info_BLUAllGoodSpells" xml:space="preserve"><value>所需法术均已启用！</value></data>
+  <data name="Label_AutoMode" xml:space="preserve"><value>自动模式</value></data>
+  <data name="Label_ConflictsWith" xml:space="preserve"><value>冲突项：</value></data>
+  <data name="Info_pvpActionReplacingWarning" xml:space="preserve"><value>设置中已禁用动作替换！PvP 连招将无法生效！</value></data>
+  <data name="Info_pvpAutoRotationWarning" xml:space="preserve"><value>自动循环不支持 PvP。</value></data>
+  <data name="Info_pvpDesc" xml:space="preserve"><value>这些是 PvP 功能，仅会在启用 PvP 的区域内生效。</value></data>
+  <data name="Info_pvpNothing" xml:space="preserve"><value>没有匹配你的搜索内容。</value></data>
+  <data name="Info_SelectAJob" xml:space="preserve"><value>请从下方选择一个职业，以启用并配置其功能。</value></data>
+  <data name="Warning_BLUMissingSpells" xml:space="preserve"><value>缺少已启用法术：</value></data>
+  <data name="Warning_BLUNoSpells" xml:space="preserve"><value>未启用任何所需法术：</value></data>
+  <data name="Warning_DisabledDueToUpdate" xml:space="preserve"><value>因版本更新而禁用</value></data>
+  <data name="Warning_EquipJobStone" xml:space="preserve"><value>请装备职业水晶，以重新解锁这些功能。</value></data>
+  <data name="Button_Back" xml:space="preserve"><value>返回</value></data>
+  <data name="Checkbox_searchDescriptionText" xml:space="preserve"><value>描述</value></data>
+  <data name="Search_searchHintText" xml:space="preserve"><value>选项名称、ID、内部名称、描述等</value></data>
+  <data name="Label_searchLabelText" xml:space="preserve"><value>搜索：</value></data>
+</root>

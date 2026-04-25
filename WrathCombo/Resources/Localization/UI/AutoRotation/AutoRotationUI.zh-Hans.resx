@@ -1,120 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-    <xsd:element name="root" msdata:IsDataSet="true">
-      <xsd:complexType>
-        <xsd:choice maxOccurs="unbounded">
-          <xsd:element name="metadata">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
-              </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="assembly">
-            <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="data">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="resheader">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
-            </xsd:complexType>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:complexType>
-    </xsd:element>
-  </xsd:schema>
-  <resheader name="resmimetype">
-    <value>text/microsoft-resx</value>
-  </resheader>
-  <resheader name="version">
-    <value>2.0</value>
-  </resheader>
-  <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Checkbox_BypassFATETargets" xml:space="preserve"><value>对 FATE 目标绕过“仅战斗中”限制</value></data>
+  <data name="Checkbox_BypassQuestTargets" xml:space="preserve"><value>对任务目标绕过“仅战斗中”限制</value></data>
+  <data name="Checkbox_BypassSelfUse" xml:space="preserve"><value>当连招建议自用技能时允许绕过</value></data>
+  <data name="Checkbox_DisableInstanceExit" xml:space="preserve"><value>离开副本内容后自动关闭</value></data>
+  <data name="Checkbox_EnableAutoRotation" xml:space="preserve"><value>启用自动循环</value></data>
+  <data name="Checkbox_EnableInstancedEnter" xml:space="preserve"><value>进入副本内容时自动启用</value></data>
+  <data name="Checkbox_EnforceBestAoETarget" xml:space="preserve"><value>强制选择最佳 AoE 目标</value></data>
+  <data name="Checkbox_OnlyInCombat" xml:space="preserve"><value>仅在战斗中启用</value></data>
+  <data name="Label_DamageSettings" xml:space="preserve"><value>输出设置</value></data>
+  <data name="HelpText_AoETargetCount" xml:space="preserve"><value>关闭后将停用 AoE 输出功能。否则，只有当满足指定数量的目标位于该 AoE 技能范围内时才会使用。此设置适用于三种职责以及所有造成 AoE 伤害的功能。</value></data>
+  <data name="HelpText_BypassFATETargets" xml:space="preserve"><value>若未同步到 FATE，则在脱战时禁用自动模式。</value></data>
+  <data name="HelpText_BypassQuestTargets" xml:space="preserve"><value>若不在任务目标范围内，则在脱战时禁用自动模式。</value></data>
+  <data name="HelpText_BypassSelfUse" xml:space="preserve"><value>很多职业有脱战可用动作，例如 {0} 或 {1}。启用后，这些动作在不处于战斗中时也可正常使用。</value></data>
+  <data name="HelpText_DPSTargettingMode" xml:space="preserve"><value>手动 - 目标选择完全由你自己控制。
+最高最大生命 - 优先选择最大生命值最高的敌人。
+最低最大生命 - 优先选择最大生命值最低的敌人。
+最高当前生命 - 优先选择当前生命值最高的敌人。
+最低当前生命 - 优先选择当前生命值最低的敌人。
+坦克目标 - 优先选择队伍中第一位坦克当前的目标。
+最近 - 优先选择离你最近的目标。
+最远 - 优先选择离你最远的目标。</value></data>
+  <data name="HelpText_EnforceBestAoETarget" xml:space="preserve"><value>在其他目标模式下，AoE 会根据命中目标数量最多来选择目标。手动模式下，只有勾选此项才会这样做。</value></data>
+  <data name="HelpText_QueueWindow" xml:space="preserve"><value>该项决定在 GCD 结束前多久提前排入下一个武技或魔法。延迟会影响实际执行的动作；如果你发现技能使用异常，例如因 MP 未及时更新而连续施放两次暴雪 IV，请调整该值。</value></data>
+  <data name="Info_Header" xml:space="preserve"><value>你可以在这里配置自动循环的运行条件。
+带有“自动模式”复选框的功能可供自动循环使用。</value></data>
+  <data name="Input_AoETargetCount" xml:space="preserve"><value>AoE 伤害功能所需目标数</value></data>
+  <data name="Input_AutoRotationDelay" xml:space="preserve"><value>进入战斗后启用自动循环的延迟（秒）</value></data>
+  <data name="Input_QueueWindow" xml:space="preserve"><value>预输入窗口（秒）</value></data>
+  <data name="Label_DPSTargetingMode" xml:space="preserve"><value>目标模式</value></data>
+  <data name="Label_DPSMaxTargetDistance" xml:space="preserve"><value>最大目标距离</value></data>
+  <data name="HelpText_DPSMaxTargetDistance" xml:space="preserve"><value>除手动模式外，所有目标模式搜索目标时使用的最大距离。仅支持 1 到 30。</value></data>
+  <data name="Label_IgnoreRangeInBoss" xml:space="preserve"><value>Boss 战时忽略最大目标距离</value></data>
+  <data name="HelpText_IgnoreRangeInBoss" xml:space="preserve"><value>仅在 Boss 战中生效，无论距离多远，目标都有资格被攻击。</value></data>
+  <data name="Checkbox_FATEPriority" xml:space="preserve"><value>优先 FATE 目标</value></data>
+  <data name="Checkbox_QuestPriority" xml:space="preserve"><value>优先任务目标</value></data>
+  <data name="Checkbox_PreferNonCombat" xml:space="preserve"><value>优先未进入战斗的目标</value></data>
+  <data name="Checkbox_OnlyAttackInCombat" xml:space="preserve"><value>只攻击已在战斗中的目标</value></data>
+  <data name="Checkbox_UnTargetAndDisableForPenalty" xml:space="preserve"><value>遇到高热症时取消目标并停止动作</value></data>
+  <data name="Checkbox_DPSAlwaysHardTarget" xml:space="preserve"><value>始终设置硬目标</value></data>
+  <data name="Label_IgnoredNPCs" xml:space="preserve"><value>忽略的 NPC</value></data>
+  <data name="HelpText_UnTargetAndDisableForPenalty" xml:space="preserve"><value>如果检测到玩家身上存在高热症（或类似的加速炸弹）等会因执行动作而受罚的机制，将取消当前目标并暂时停止自动循环动作。</value></data>
+  <data name="HelpText_DPSAlwaysHardTarget" xml:space="preserve"><value>自动循环本身不需要选中敌人也能运作，但启用此设置后，每次执行攻击时都会强制设置你的硬目标。</value></data>
+  <data name="HelpText_IgnoredNPCs" xml:space="preserve"><value>这些 NPC 会被自动循环忽略。
+该 NPC 的所有实例都会从自动选目标中排除（手动模式仍可生效）。
+要从列表中移除 NPC，请选中它并点击下方“删除”按钮。
+要添加 NPC，请先选中该 NPC，然后使用命令：/wrath ignore</value></data>
+  <data name="Button_DeleteFromIgnored" xml:space="preserve"><value>从忽略列表中删除</value></data>
+  <data name="Header_HealingSettings" xml:space="preserve"><value>治疗设置</value></data>
+  <data name="Label_HealingTargetingMode" xml:space="preserve"><value>治疗目标模式</value></data>
+  <data name="HelpText_HealerTargetingMode" xml:space="preserve"><value>手动 - 只有你手动选中目标时才会治疗。如果目标未满足下方的治疗阈值条件，则会跳过治疗并转为输出（若输出也已启用）。
+最高当前生命 - 优先治疗当前生命百分比最高的队友。
+最低当前生命 - 优先治疗当前生命百分比最低的队友。</value></data>
+  <data name="Slider_SingleTargetHPP" xml:space="preserve"><value>单体治疗生命阈值%</value></data>
+  <data name="Slider_SingleTargetRegenHPP" xml:space="preserve"><value>单体治疗生命阈值%（目标带有再生/吉星相位）</value></data>
+  <data name="HelpText_SingleTargetRegenHPP" xml:space="preserve"><value>通常建议将其设得低于上方的阈值。</value></data>
+  <data name="Slider_SingleTargetExcogHPP" xml:space="preserve"><value>单体治疗生命阈值%（目标带有深谋远虑）</value></data>
+  <data name="HelpText_SingleTargetExcogHPP" xml:space="preserve"><value>通常建议将其设得低于上方的阈值。</value></data>
+  <data name="Slider_AoETargetHPP" xml:space="preserve"><value>AoE 治疗生命阈值%</value></data>
+  <data name="Input_AoEHealTargetCount" xml:space="preserve"><value>AoE 治疗功能所需目标数</value></data>
+  <data name="HelpText_AoEHealTargetCount" xml:space="preserve"><value>关闭后将停用 AoE 治疗功能。否则，只有满足指定数量的目标位于 AoE 治疗范围内时才会使用。</value></data>
+  <data name="Input_HealDelay" xml:space="preserve"><value>满足治疗条件后开始治疗的延迟（秒）</value></data>
+  <data name="HelpText_HealDelay" xml:space="preserve"><value>不要设得太高！通常 1 到 2 秒已经足够自然。</value></data>
+  <data name="Checkbox_AutoRez" xml:space="preserve"><value>自动复活</value></data>
+  <data name="HelpText_AutoRez" xml:space="preserve"><value>会尝试复活倒下的队友。
+适用于 {0}、{1}、{2}、{3}、{4} 以及 {5} {6} {7}</value></data>
+  <data name="Checkbox_AutoRezOutOfParty" xml:space="preserve"><value>对队外成员生效</value></data>
+  <data name="Checkbox_AutoRezRequireSwift" xml:space="preserve"><value>要求 {0}/{1}</value></data>
+  <data name="HelpText_AutoRezRequireSwift" xml:space="preserve"><value>要求 {0} 或 {1} 的 {2} 可用时才会进行复活，以避免硬读条。</value></data>
+  <data name="Checkbox_AutoRezDPSJobs" xml:space="preserve"><value>对 {0} 与 {1} 生效</value></data>
+  <data name="HelpText_AutoRezDPSJobs" xml:space="preserve"><value>当你使用 {0} 或 {1} 时，也会尝试复活倒下的队友。{2} 仅会在 {3} 或 {4} 生效时进行复活。</value></data>
+  <data name="Checkbox_AutoRezDPSJobsHealersOnly" xml:space="preserve"><value>仅复活可复活职业</value></data>
+  <data name="HelpText_AutoRezDPSJobsHealersOnly" xml:space="preserve"><value>当你使用 {0} 或 {1} 时，只会尝试复活治疗和可复活职业。</value></data>
+  <data name="Checkbox_AutoCleanse" xml:space="preserve"><value>自动{0}</value></data>
+  <data name="HelpText_AutoCleanse" xml:space="preserve"><value>会自动对可驱散的减益使用 {0}（治疗优先）。</value></data>
+  <data name="Checkbox_ManageKardia" xml:space="preserve"><value>[{0}] 自动管理 {1}</value></data>
+  <data name="HelpText_ManageKardia" xml:space="preserve"><value>会将 {0} 切换到当前被敌人锁定的队友身上；若多人被锁定，则优先坦克。</value></data>
+  <data name="Checkbox_KardiaTanksOnly" xml:space="preserve"><value>仅在坦克之间切换 {0}</value></data>
+  <data name="Checkbox_PreEmptiveHoT" xml:space="preserve"><value>[{0}/{1}/{2}/{3}] 预先对焦点目标施加 HoT/护盾</value></data>
+  <data name="HelpText_PreEmptiveHoT" xml:space="preserve"><value>脱战时，如果你的焦点目标距离敌人不超过 30y，则会对其施加 {0}/{1}/{2}/{3}。（会绕过“仅战斗中”设置）</value></data>
+  <data name="Checkbox_IncludeNPCs" xml:space="preserve"><value>治疗友方 NPC</value></data>
+  <data name="HelpText_IncludeNPCs" xml:space="preserve"><value>对需要治疗 NPC、但这些 NPC 又不会直接加入你队伍的治疗职业任务等场景很有帮助。</value></data>
+  <data name="Checkbox_HealerAlwaysHardTarget" xml:space="preserve"><value>始终设置硬目标###HealerHardTarget</value></data>
+  <data name="HelpText_HealerAlwaysHardTarget" xml:space="preserve"><value>自动循环本身不需要选中友方也能运作，但启用此设置后，每次执行治疗时都会强制设置你的硬目标。</value></data>
+  <data name="Label_Advanced" xml:space="preserve"><value>高级</value></data>
+  <data name="Input_ThrottleDelay" xml:space="preserve"><value>节流延迟（毫秒）</value></data>
+  <data name="HelpText_ThrottleDelay" xml:space="preserve"><value>自动循环内置了节流器，为了性能只会每隔一定毫秒数运行一次。如果你遇到帧率问题，可以尝试提高这个值。但请注意，值过高可能引入 GCD 裁剪，请自行测试合适的数值。</value></data>
+  <data name="Checkbox_Orbwalker" xml:space="preserve"><value>启用 Orbwalker 联动</value></data>
+  <data name="HelpText_Orbwalker" xml:space="preserve"><value>启用后，即使在移动中，自动循环也会使用有读条的技能，因为 Orbwalker 会在施法期间锁定移动。如果 Orbwalker 尚未启用“Buffer Initial Cast”，你可能还需要在那里打开该选项。需要已安装并启用 Orbwalker 插件。</value></data>
+  <data name="Checkbox_HandleRaidwides" xml:space="preserve"><value>处理检测到的全团伤害</value></data>
+  <data name="HelpText_HandleRaidwides" xml:space="preserve"><value>在检测到全团伤害或团队伤害前，尝试提前使用技能进行减伤或抬血。最多使用 2 个动作（不含用于铺垫的 {0}）。</value></data>
+  <data name="Checkbox_HandleTankbusters" xml:space="preserve"><value>处理检测到的死刑</value></data>
+  <data name="HelpText_HandleTankbusters" xml:space="preserve"><value>在检测到死刑前，尝试提前使用技能为目标减伤。最多使用 1 个动作（不含用于铺垫的 {0}）。</value></data>
 </root>

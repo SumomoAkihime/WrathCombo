@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="HelpText_Retargetting1" xml:space="preserve"><value>启用后，此功能会涉及动作重定向。</value></data>
+  <data name="HelpText_Retargetting2" xml:space="preserve"><value>该功能影响的动作会自动
+按你配置的优先级
+选择目标。</value></data>
+  <data name="HelpText_Retargetting3" xml:space="preserve"><value>如果使用 Redirect、Reaction 等插件，
+并且它们也会影响同一批动作，就会发生冲突并可能产生问题。</value></data>
+  <data name="Info_searchHintText" xml:space="preserve"><value>分类名称、设置名称、内部名称等</value></data>
+  <data name="Label_searchLabelText" xml:space="preserve"><value>搜索：</value></data>
+  <data name="Button_CreateDebug" xml:space="preserve"><value>生成调试文件</value></data>
+  <data name="HelpText_CreateDebug" xml:space="preserve"><value>将在桌面生成一个调试文件。
+可提供给开发者以协助排查问题。
+等同于使用以下命令：`/wrath debug`</value></data>
+  <data name="Header_SettingsAbout" xml:space="preserve"><value>此页面可用于自定义 Wrath Combo 的全局设置。</value></data>
+  <data name="Text_RecommendedValue" xml:space="preserve"><value>推荐值：</value></data>
+  <data name="Text_DefaultValue" xml:space="preserve"><value>默认值：</value></data>
+  <data name="Label_HealStack" xml:space="preserve"><value>当前治疗栈：</value></data>
+  <data name="HelpText_HealStack" xml:space="preserve"><value>这是 Wrath 尝试选择治疗目标的顺序。
+如果关闭了“重定向治疗动作”选项，它仅会作为检查生命值阈值的目标，用于决定不同治疗动作是否应显示在循环中。
+这意味着如果你自己的重定向方案（Redirect、Reaction 等）与这里不一致，Wrath 可能会陷入一直治疗错误目标的循环！
+如果启用了“重定向治疗动作”，那么这里的目标也会成为实际施放治疗动作的对象（即使该动作并不会先检查该目标的生命值，例如被连招替换出来的动作）。</value></data>
+  <data name="Warning_HealStack" xml:space="preserve"><value>请你自己确保所使用的重定向方案与该治疗栈一致！
+否则 Wrath 可能会陷入循环：检查的是 X 玩家需要治疗，但实际治疗到的却是 Y 玩家！</value></data>
+  <data name="Label_RaiseStack" xml:space="preserve"><value>当前复活栈：</value></data>
+  <data name="HelpText_RaiseStack" xml:space="preserve"><value>这是 Wrath 在启用任意复活功能重定向时，
+尝试选择复活目标的顺序。</value></data>
+</root>

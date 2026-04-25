@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Tooltip_ConflictingPlugins" xml:space="preserve"><value>以下插件已知会与 {0} 冲突：
+
+{1}
+
+建议你禁用这些插件，或禁用它们的循环/轮换组件，以避免出现异常行为和 Bug。</value></data>
+  <data name="Tooltip_ConflictingPluginSettings" xml:space="preserve"><value>以下插件已知会与
+你已启用的 {0} 设置冲突：
+{1}
+
+建议你禁用这些插件，或
+移除这些插件中的冲突设置，
+以避免出现异常行为和 Bug。</value></data>
+  <data name="Tooltip_ConflictingWrathSettings" xml:space="preserve"><value>以下 Wrath 设置已知会与 {0} 的设置冲突：
+{1}
+
+建议你禁用这些设置，以避免出现异常行为和 Bug。</value></data>
+  <data name="Tooltip_Conflicts_Reason" xml:space="preserve"><value>- 设置：{0}
+    问题：{1}</value></data>
+  <data name="Tooltip_DalamudConfigConflicts" xml:space="preserve"><value>你的 Dalamud 配置存在冲突：
+</value></data>
+  <data name="Tooltip_GameConflicts" xml:space="preserve"><value>以下游戏设置已知会与 {0} 的设置冲突：
+{1}
+
+建议你调整这些设置，以避免出现异常行为和 Bug。</value></data>
+  <data name="Tooltip_TargettingConflicts" xml:space="preserve"><value>你在以下插件中的配置会与
+{0} 已启用的动作重定向冲突：
+{1}
+
+建议你禁用这些插件，
+或从它们的设置中移除冲突动作，
+或在 {0} 中禁用该动作的重定向，
+以避免出现异常行为和 Bug。</value></data>
+  <data name="Tooltip_TargettingConflicts_Action" xml:space="preserve"><value>        - {0}</value></data>
+  <data name="Tooltip_TargettingConflicts_Plugin" xml:space="preserve"><value>- {0} {1}
+    在该插件与 {2} 中都被重定向的动作：
+{3}</value></data>
+  <data name="Warning_UnknownConflictType" xml:space="preserve"><value>未知的冲突类型：</value></data>
+  <data name="Wrath_Combo" xml:space="preserve"><value>Wrath Combo</value></data>
+  <data name="Button_CollapseSidebar" xml:space="preserve"><value>收起侧边栏</value></data>
+  <data name="Button_ExpandSidebar" xml:space="preserve"><value>展开侧边栏</value></data>
+  <data name="Button_PvEFeatures" xml:space="preserve"><value>PvE 功能</value></data>
+  <data name="Button_PvPFeatures" xml:space="preserve"><value>PvP 功能</value></data>
+  <data name="Button_AutoRotation" xml:space="preserve"><value>自动循环</value></data>
+  <data name="Button_Settings" xml:space="preserve"><value>设置</value></data>
+  <data name="Button_About" xml:space="preserve"><value>关于</value></data>
+</root>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="TankbusterTTS" xml:space="preserve"><value>{0} 吃死刑！</value></data>
+  <data name="StackTTS" xml:space="preserve"><value>{1} 身上有{0}分摊点名！</value></data>
+  <data name="RaidwideTTS" xml:space="preserve"><value>即将出现全团伤害</value></data>
+  <data name="MultiHit" xml:space="preserve"><value>多段 </value></data>
+</root>

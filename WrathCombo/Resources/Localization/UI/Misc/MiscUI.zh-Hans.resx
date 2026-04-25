@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Bozja" xml:space="preserve"><value>博兹雅</value></data>
+  <data name="Content" xml:space="preserve"><value>内容</value></data>
+  <data name="DOL" xml:space="preserve"><value>采集职业</value></data>
+  <data name="Job Roles" xml:space="preserve"><value>职业职责</value></data>
+  <data name="Normal" xml:space="preserve"><value>普通</value></data>
+  <data name="Occult Crescent" xml:space="preserve"><value>秘术新月</value></data>
+  <data name="Replaces" xml:space="preserve"><value>替换</value></data>
+  <data name="Roles and Content" xml:space="preserve"><value>职责与内容</value></data>
+  <data name="Setting" xml:space="preserve"><value>设置</value></data>
+  <data name="Variant" xml:space="preserve"><value>异闻</value></data>
+  <data name="Variant Dungeons" xml:space="preserve"><value>异闻迷宫</value></data>
+  <data name="Or" xml:space="preserve"><value>或</value></data>
+  <data name="Raise" xml:space="preserve"><value>复活</value></data>
+</root>
