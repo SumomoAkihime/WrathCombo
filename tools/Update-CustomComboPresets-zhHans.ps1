@@ -1,6 +1,7 @@
 ﻿param(
     [string]$SourcePath = "WrathCombo/Resources/Localization/Presets/CustomComboPresets.resx",
-    [string]$OutputPath = "WrathCombo/Resources/Localization/Presets/CustomComboPresets.zh-Hans.resx"
+    [string]$OutputPath = "WrathCombo/Resources/Localization/Presets/CustomComboPresets.zh-Hans.resx",
+    [string]$ActionMapPath = "tools/huiji-action-map.json"
 )
 
 Set-StrictMode -Version Latest
@@ -15,8 +16,36 @@ function Read-Utf8Xml {
     return $xml
 }
 
+function Read-ActionNameMap {
+    param([string]$Path)
+
+    if (-not (Test-Path $Path)) {
+        return [ordered]@{}
+    }
+
+    $jsonText = [System.IO.File]::ReadAllText((Resolve-Path $Path), [System.Text.Encoding]::UTF8)
+    $json = $jsonText | ConvertFrom-Json
+    if ($null -eq $json.by_en) {
+        return [ordered]@{}
+    }
+
+    $map = [ordered]@{}
+    $entries = @($json.by_en.PSObject.Properties | Sort-Object { $_.Name.Length } -Descending)
+    foreach ($entry in $entries) {
+        if ([string]::IsNullOrWhiteSpace($entry.Name) -or [string]::IsNullOrWhiteSpace([string]$entry.Value)) {
+            continue
+        }
+        $map[[string]$entry.Name] = [string]$entry.Value
+    }
+
+    return $map
+}
+
 function Convert-PresetLine {
-    param([string]$Line)
+    param(
+        [string]$Line,
+        [hashtable]$ActionNameMap
+    )
 
     if ([string]::IsNullOrWhiteSpace($Line)) {
         return $Line
@@ -67,6 +96,70 @@ function Convert-PresetLine {
         "Setting" = "设置"
         "Replaces" = "替换"
     }
+    $manualActionMap = [ordered]@{
+        "Hard Slash" = "重斩"
+        "Lucid Dreaming" = "醒梦"
+        "Second Wind" = "内丹"
+        "Bloodbath" = "浴血"
+        "Interject" = "插言"
+        "Addle" = "昏乱"
+        "Reprisal" = "雪仇"
+        "Swiftcast" = "即刻咏唱"
+        "Esuna" = "康复"
+        "Rampart" = "铁壁"
+        "Low Blow" = "下踢"
+        "Arms Length" = "亲疏自行"
+        "Divination" = "占卜"
+        "Lightspeed" = "光速"
+        "Fan Dance" = "扇舞"
+        "Fan Dance 3" = "扇舞·急"
+        "Fan Dance 4" = "扇舞·终"
+        "Arm's Length" = "亲疏自行"
+        "Leg Sweep" = "扫腿"
+        "Interrupt" = "打断"
+        "Fight or Flight" = "战逃反应"
+    }
+    $replaceWholePhrase = {
+        param(
+            [string]$InputText,
+            [string]$Needle,
+            [string]$Replacement
+        )
+
+        if ([string]::IsNullOrWhiteSpace($Needle)) {
+            return $InputText
+        }
+
+        $pattern = '(?<![A-Za-z])' + [regex]::Escape($Needle) + '(?![A-Za-z])'
+        return [regex]::Replace($InputText, $pattern, [System.Text.RegularExpressions.MatchEvaluator]{
+            param($match)
+            $Replacement
+        })
+    }
+
+    $translateFragment = {
+        param([string]$Text)
+
+        $result = $Text
+        foreach ($entry in $manualActionMap.GetEnumerator()) {
+            if ($result.Contains([string]$entry.Key)) {
+                $result = & $replaceWholePhrase $result ([string]$entry.Key) ([string]$entry.Value)
+            }
+        }
+
+        foreach ($entry in $ActionNameMap.GetEnumerator()) {
+            if ($result.Contains([string]$entry.Key)) {
+                $result = & $replaceWholePhrase $result ([string]$entry.Key) ([string]$entry.Value)
+            }
+        }
+
+        $result = $result.Replace("Role Action ", "职能动作 ")
+        $result = $result.Replace("Defensive Role Action ", "防御职能动作 ")
+        $result = $result.Replace("Raidwide ", "团伤 ")
+        $result = $result.Replace("Tankbuster ", "死刑 ")
+        $result = $result.Replace("Variant ", "异闻 ")
+        return $result
+    }
 
     if ($exactMap.ContainsKey($Line)) {
         return $exactMap[$Line]
@@ -104,12 +197,92 @@ function Convert-PresetLine {
         return "在没有 Aetherflow 层数时使用 Aetherflow。"
     }
 
+    if ($Line -eq "Collection of tools designed to try and cast during a raidwide attack when detected.") {
+        return "用于在检测到团伤攻击时尝试施放的工具集合。"
+    }
+
+    if ($Line -eq "This will work for most, but not all raidwide attacks and is no substitute for learning the fight") {
+        return "它适用于大多数但并非全部团伤机制，不能替代熟悉战斗本身。"
+    }
+
+    if ($Line -eq "Options for Advanced Combos' In-Combo Mitigation.") {
+        return "进阶连招内置减伤的选项集合。"
+    }
+
+    if ($Line -eq "Enable Mitigation in each Advanced Combo to use these options.") {
+        return "需要先在各个进阶连招中启用减伤，才会使用这些选项。"
+    }
+
+    if ($Line -eq "(Simple Mode does not use these Options, instead Recommended Values in place of them)") {
+        return "（简易模式不会使用这些选项，而是改用对应的推荐值逻辑。）"
+    }
+
+    if ($Line -eq "Enable this to add Variant Actions in Variant Dungeons.") {
+        return "启用后会在异闻迷宫中加入异闻技能。"
+    }
+
+    if ($Line -eq "Variant Actions will be used by Single Target and AoE DPS Combos, in both Simple & Advanced") {
+        return "这些异闻技能会用于单体与群体输出连招，并同时覆盖简易与进阶模式。"
+    }
+
+    if ($Line -eq "- Requires target's HP to be under:") {
+        return "- 需要目标生命值低于："
+    }
+
+    if ($Line -eq "- Prefers to use during Fight or Flight.") {
+        return "- 优先在战逃反应期间使用。"
+    }
+
+    if ($Line -eq "These features are ideal if you want to customize the rotation.") {
+        return "如果你想自定义循环，这些功能会很适合你。"
+    }
+
+    if ($Line -eq "Override Smaller Features") {
+        return "覆盖较小功能"
+    }
+
+    if ($Line -eq "This option adds the Bard's Songs to the Advanced Bard Feature.") {
+        return "此选项会把吟游诗人的歌曲加入进阶吟游功能。"
+    }
+
+    if ($Line -eq "Options for including Fan Dance 3 and 4 into the rotation.") {
+        return "将扇舞·急与扇舞·终纳入循环的选项。"
+    }
+
+    if ($Line -eq "Fan Dance Proc Options") {
+        return "扇舞触发选项"
+    }
+
+    if ($Line -match "(?s)^Change custom actions into dance steps while dancing\.\r?\nLets you still dance with combos on, without using Standard Step Combo Features above\.$") {
+        return "在跳舞期间将自定义动作替换为舞步。`n这样即使开启连招功能，也仍然可以跳舞，而无需启用上方的标准舞步连招功能。"
+    }
+
+    if ($Line -eq "Features and options involving shared role actions for Healers.") {
+        return "与治疗职能共享职能动作相关的功能与选项。"
+    }
+
+    if ($Line -eq "Features and options involving shared role actions for Tanks.") {
+        return "与坦克职能共享职能动作相关的功能与选项。"
+    }
+
+    if ($Line -eq "Features and options involving shared role actions for Melee DPS.") {
+        return "与近战输出共享职能动作相关的功能与选项。"
+    }
+
+    if ($Line -eq "Features and options involving shared role actions for Physical Ranged DPS.") {
+        return "与物理远程输出共享职能动作相关的功能与选项。"
+    }
+
+    if ($Line -eq "Features and options involving shared role actions for Magical Ranged DPS.") {
+        return "与魔法远程输出共享职能动作相关的功能与选项。"
+    }
+
     if ($Line -eq "Adds Interject to the rotation when your target's cast is interruptible.") {
-        return "当目标读条可打断时，将 Interject 加入循环。"
+        return "当目标读条可打断时，将插言加入循环。"
     }
 
     if ($Line -eq "Adds Lucid Dreaming when MP drops below slider value:") {
-        return "当 MP 低于滑条设定值时加入 Lucid Dreaming："
+        return "当 MP 低于滑条设定值时加入醒梦："
     }
 
     if ($Line -match '(?s)^Collection of tools designed to try and cast during a raidwide attack when detected\.\r?\nThis will work for most, but not all raidwide attacks and is no substitute for learning the fight$') {
@@ -137,7 +310,7 @@ function Convert-PresetLine {
     }
 
     if ($Line -match '^Replaces (?<action>.+?) with a full one-button (?<body>.+?)\.$') {
-        $action = $Matches["action"]
+        $action = & $translateFragment $Matches["action"]
         $body = $Matches["body"]
         $bodyMap = @{
             "single target rotation" = "完整的一键单体循环"
@@ -154,7 +327,7 @@ function Convert-PresetLine {
     }
 
     if ($Line -match '^Replaces (?<action>.+?) with a one button (?<body>.+?)\.$') {
-        $action = $Matches["action"]
+        $action = & $translateFragment $Matches["action"]
         $body = $Matches["body"]
         $bodyMap = @{
             "single target healing setup" = "一键单体治疗方案"
@@ -167,51 +340,59 @@ function Convert-PresetLine {
     }
 
     if ($Line -match '^Replaces (?<action>.+?) with options below\.?$') {
-        return "将 $($Matches['action']) 替换为下方选项集合。"
+        return "将 $(& $translateFragment $Matches['action']) 替换为下方选项集合。"
     }
 
     if ($Line -match '^(?<name>.+?) Option$') {
-        return "$($Matches['name']) 选项"
+        return "$(& $translateFragment $Matches['name']) 选项"
     }
 
     if ($Line -match '^(?<name>.+?) Feature$') {
-        return "$($Matches['name']) 功能"
+        return "$(& $translateFragment $Matches['name']) 功能"
     }
 
     if ($Line -match '^(?<name>.+?) Retargeting$') {
-        return "$($Matches['name']) 重定向"
+        return "$(& $translateFragment $Matches['name']) 重定向"
     }
 
     if ($Line -match '^Retarget (?<name>.+)$') {
-        return "重定向 $($Matches['name'])"
+        return "重定向 $(& $translateFragment $Matches['name'])"
     }
 
     if ($Line -match '^Global (?<name>.+?) Features$') {
-        return "全局 $($Matches['name']) 功能"
+        return "全局 $(& $translateFragment $Matches['name']) 功能"
     }
 
     if ($Line -match '^(?<name>.+?): (?<body>.+?) Protection$') {
-        return "$($Matches['name'])：$($Matches['body']) 防重复"
+        return "$(& $translateFragment $Matches['name'])：$(& $translateFragment $Matches['body']) 防重复"
     }
 
     if ($Line -match '^Adds (?<name>.+?) to Burst Mode\.?$') {
-        return "将 $($Matches['name']) 加入爆发模式。"
+        return "将 $(& $translateFragment $Matches['name']) 加入爆发模式。"
     }
 
     if ($Line -match '^Adds (?<name>.+?) to the rotation\.?$') {
-        return "将 $($Matches['name']) 加入循环。"
+        return "将 $(& $translateFragment $Matches['name']) 加入循环。"
     }
 
     if ($Line -match '^Adds (?<name>.+?) to the combo\.?$') {
-        return "将 $($Matches['name']) 加入连招。"
+        return "将 $(& $translateFragment $Matches['name']) 加入连招。"
     }
 
     if ($Line -match '^Adds (?<name>.+?) when [Rr]aidwide is detected casting\.$') {
-        return "检测到团伤读条时加入 $($Matches['name'])。"
+        return "检测到团伤读条时加入 $(& $translateFragment $Matches['name'])。"
+    }
+
+    if ($Line -match '^Adds (?<name>.+?) when raidwide casting is detected\.$') {
+        return "检测到团伤读条时加入 $(& $translateFragment $Matches['name'])。"
     }
 
     if ($Line -match '^Adds (?<name>.+?) when target non-boss is casting\.$') {
-        return "当非 Boss 目标正在读条时加入 $($Matches['name'])。"
+        return "当非 Boss 目标正在读条时加入 $(& $translateFragment $Matches['name'])。"
+    }
+
+    if ($Line -match "^Adds (?<name>.+?) to the rotation when your target is casting\.$") {
+        return "当目标正在读条时，将 $(& $translateFragment $Matches['name']) 加入循环。"
     }
 
     if ($Line -match '^Adds the Balance opener at level (?<level>\d+)\.$') {
@@ -223,51 +404,51 @@ function Convert-PresetLine {
     }
 
     if ($Line -match '^Use (?<name>.+?) on cooldown\.$') {
-        return "$($Matches['name']) 冷却好就使用。"
+        return "$(& $translateFragment $Matches['name']) 冷却好就使用。"
     }
 
     if ($Line -match '^Use (?<name>.+?) when HP is below set threshold\.$') {
-        return "生命值低于设定阈值时使用 $($Matches['name'])。"
+        return "生命值低于设定阈值时使用 $(& $translateFragment $Matches['name'])。"
     }
 
     if ($Line -match '^Use (?<name>.+?) on incapacitated party members\.$') {
-        return "对无法战斗的队友使用 $($Matches['name'])。"
+        return "对无法战斗的队友使用 $(& $translateFragment $Matches['name'])。"
     }
 
     if ($Line -match '^Uses (?<name>.+?) when available at or below set health threshold\.$') {
-        return "当 $($Matches['name']) 可用且生命值低于设定阈值时使用。"
+        return "当 $(& $translateFragment $Matches['name']) 可用且生命值低于设定阈值时使用。"
     }
 
     if ($Line -match '^Adds (?<name>.+?) to Burst Mode below selected health$') {
-        return "在低于设定生命值时，将 $($Matches['name']) 加入爆发模式。"
+        return "在低于设定生命值时，将 $(& $translateFragment $Matches['name']) 加入爆发模式。"
     }
 
     if ($Line -match '^Adds Defensive Role Action (?<name>.+?) to Burst Mode below selected health$') {
-        return "在低于设定生命值时，将防御职能动作 $($Matches['name']) 加入爆发模式。"
+        return "在低于设定生命值时，将防御职能动作 $(& $translateFragment $Matches['name']) 加入爆发模式。"
     }
 
     if ($Line -match '^Adds (?<name>.+?) when (?<count>\d+) or more targets\.$') {
-        return "当目标数达到 $($Matches['count']) 个或更多时加入 $($Matches['name'])。"
+        return "当目标数达到 $($Matches['count']) 个或更多时加入 $(& $translateFragment $Matches['name'])。"
     }
 
     if ($Line -match '^Adds (?<name>.+?) to the one-button mitigation\.$') {
-        return "将 $($Matches['name']) 加入一键减伤功能。"
+        return "将 $(& $translateFragment $Matches['name']) 加入一键减伤功能。"
     }
 
     if ($Line -match '^Adds (?<name>.+?) and (?<name2>.+?) to the rotation\.$') {
-        return "将 $($Matches['name']) 和 $($Matches['name2']) 加入循环。"
+        return "将 $(& $translateFragment $Matches['name']) 和 $(& $translateFragment $Matches['name2']) 加入循环。"
     }
 
     if ($Line -match '^Adds (?<name>.+?) and (?<name2>.+?) to the combo, using them when below the HP Percentage threshold\.$') {
-        return "将 $($Matches['name']) 和 $($Matches['name2']) 加入连招，并在生命百分比低于阈值时使用。"
+        return "将 $(& $translateFragment $Matches['name']) 和 $(& $translateFragment $Matches['name2']) 加入连招，并在生命百分比低于阈值时使用。"
     }
 
     if ($Line -match "^Adds (?<name>.+?) to the rotation when your target's cast is interruptible\.$") {
-        return "当目标读条可打断时，将 $($Matches['name']) 加入循环。"
+        return "当目标读条可打断时，将 $(& $translateFragment $Matches['name']) 加入循环。"
     }
 
     if ($Line -match "(?s)^Adds (?<name>.+?) to the rotation when your target is casting\.\r?\n(?<rest>.+)$") {
-        return "当目标正在读条时，将 $($Matches['name']) 加入循环。`n$($Matches['rest'])"
+        return "当目标正在读条时，将 $(& $translateFragment $Matches['name']) 加入循环。`n$($Matches['rest'])"
     }
 
     if ($Line -match '^Will Retarget the Raises affected here to your Heal Stack\.$') {
@@ -315,13 +496,25 @@ function Convert-PresetLine {
         "This is the ideal option for newcomers to the job." = "这是该职业新手的理想选项。"
         "Particularly with autorotation." = "尤其适合配合自动循环使用。"
     }
-
     $translated = $Line
     foreach ($entry in $globalMap.GetEnumerator()) {
         $translated = $translated.Replace($entry.Key, $entry.Value)
     }
 
+    foreach ($entry in $manualActionMap.GetEnumerator()) {
+        if ($translated.Contains([string]$entry.Key)) {
+            $translated = & $replaceWholePhrase $translated ([string]$entry.Key) ([string]$entry.Value)
+        }
+    }
+
+    foreach ($entry in $ActionNameMap.GetEnumerator()) {
+        if ($translated.Contains([string]$entry.Key)) {
+            $translated = & $replaceWholePhrase $translated ([string]$entry.Key) ([string]$entry.Value)
+        }
+    }
+
     $translated = $translated.Replace("Role Action ", "职能动作 ")
+    $translated = $translated.Replace("Defensive Role Action ", "防御职能动作 ")
     $translated = $translated.Replace("Raidwide ", "团伤 ")
     $translated = $translated.Replace("Tankbuster ", "死刑 ")
     $translated = $translated.Replace("Variant ", "异闻 ")
@@ -332,6 +525,7 @@ function Convert-PresetLine {
 
 $sourceXml = Read-Utf8Xml -Path $SourcePath
 $outputXml = Read-Utf8Xml -Path $SourcePath
+$actionNameMap = Read-ActionNameMap -Path $ActionMapPath
 
 foreach ($node in @($outputXml.root.data)) {
     $valueNode = $node.SelectSingleNode("value")
@@ -341,7 +535,7 @@ foreach ($node in @($outputXml.root.data)) {
 
     $lines = $valueNode.InnerText -split "`r?`n", 0
     $translatedLines = foreach ($line in $lines) {
-        Convert-PresetLine -Line $line
+        Convert-PresetLine -Line $line -ActionNameMap $actionNameMap
     }
 
     $valueNode.InnerText = [string]::Join([Environment]::NewLine, $translatedLines)
@@ -349,8 +543,3 @@ foreach ($node in @($outputXml.root.data)) {
 
 $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
 [System.IO.File]::WriteAllText((Resolve-Path ".").Path + "\" + $OutputPath.Replace('/', '\'), $outputXml.OuterXml, $utf8NoBom)
-
-
-
-
-

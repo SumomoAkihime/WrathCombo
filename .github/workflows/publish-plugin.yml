@@ -18,7 +18,6 @@ permissions:
 env:
   DOTNET_VERSION: '10.x.x'
   PROJECT_PATH: 'WrathCombo/WrathCombo.csproj'
-  CN_VERSION_SUFFIX: '01'
 
 jobs:
   build-plugin:
@@ -103,12 +102,17 @@ jobs:
             throw "Unexpected AssemblyVersion format: $baseVersion"
           }
 
-          $manifestObject.AssemblyVersion = '{0}.{1}.{2}.{3}{4}' -f `
+          $runNumber = [int]($env:GITHUB_RUN_NUMBER ?? '1')
+          $cnRevision = ([int]$Matches.revision * 1000) + ($runNumber % 1000)
+          if ($cnRevision -gt 65535) {
+            throw "Computed CN revision is too large: $cnRevision"
+          }
+
+          $manifestObject.AssemblyVersion = '{0}.{1}.{2}.{3}' -f `
             $Matches.major, `
             $Matches.minor, `
             $Matches.build, `
-            $Matches.revision, `
-            $env:CN_VERSION_SUFFIX
+            $cnRevision
 
           $newManifestPath = Join-Path $tempDir "$newInternalName.json"
           $manifestObject | ConvertTo-Json -Depth 6 | Set-Content -Path $newManifestPath -Encoding UTF8
