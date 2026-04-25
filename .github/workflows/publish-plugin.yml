@@ -18,6 +18,7 @@ permissions:
 env:
   DOTNET_VERSION: '10.x.x'
   PROJECT_PATH: 'WrathCombo/WrathCombo.csproj'
+  CN_VERSION_SUFFIX: '01'
 
 jobs:
   build-plugin:
@@ -92,6 +93,22 @@ jobs:
           $manifestObject.RepoUrl = 'https://github.com/SumomoAkihime/WrathCombo'
           $manifestObject.Description = 'CN variant of Wrath Combo, packaged from the synced upstream source.'
           $manifestObject.Punchline = 'Wrath Combo CN build from synced upstream source.'
+
+          $baseVersion = [string]$manifestObject.AssemblyVersion
+          if ([string]::IsNullOrWhiteSpace($baseVersion)) {
+            throw 'AssemblyVersion was not found in the packaged manifest.'
+          }
+
+          if ($baseVersion -notmatch '^(?<major>\d+)\.(?<minor>\d+)\.(?<build>\d+)\.(?<revision>\d+)$') {
+            throw "Unexpected AssemblyVersion format: $baseVersion"
+          }
+
+          $manifestObject.AssemblyVersion = '{0}.{1}.{2}.{3}{4}' -f `
+            $Matches.major, `
+            $Matches.minor, `
+            $Matches.build, `
+            $Matches.revision, `
+            $env:CN_VERSION_SUFFIX
 
           $newManifestPath = Join-Path $tempDir "$newInternalName.json"
           $manifestObject | ConvertTo-Json -Depth 6 | Set-Content -Path $newManifestPath -Encoding UTF8
