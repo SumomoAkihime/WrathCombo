@@ -98,6 +98,22 @@ jobs:
             throw 'AssemblyVersion was not found in the packaged manifest.'
           }
 
+          # Prefer upstream published version (puni source) when available, because
+          # upstream repository code version can lag behind released package version.
+          try {
+            $upstreamRepo = Invoke-RestMethod -Uri 'https://love.puni.sh/ment.json' -Headers @{ 'User-Agent' = 'GitHub Actions' }
+            $upstreamWrath = $upstreamRepo | Where-Object { $_.InternalName -eq 'WrathCombo' } | Select-Object -First 1
+            $upstreamVersion = [string]$upstreamWrath.AssemblyVersion
+            if (-not [string]::IsNullOrWhiteSpace($upstreamVersion)) {
+              $baseVersion = $upstreamVersion
+              Write-Host "Using upstream published version: $baseVersion"
+            } else {
+              Write-Host "Upstream published version missing, fallback to packaged version: $baseVersion"
+            }
+          } catch {
+            Write-Host "Failed to query upstream published version, fallback to packaged version: $baseVersion"
+          }
+
           $runNumber = [int]($env:GITHUB_RUN_NUMBER ?? '1')
           $cnSuffix = $runNumber % 1000
           if ($cnSuffix -le 0) {
