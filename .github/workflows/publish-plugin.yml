@@ -98,21 +98,12 @@ jobs:
             throw 'AssemblyVersion was not found in the packaged manifest.'
           }
 
-          if ($baseVersion -notmatch '^(?<major>\d+)\.(?<minor>\d+)\.(?<build>\d+)\.(?<revision>\d+)$') {
-            throw "Unexpected AssemblyVersion format: $baseVersion"
-          }
-
           $runNumber = [int]($env:GITHUB_RUN_NUMBER ?? '1')
-          $cnRevision = ([int]$Matches.revision * 1000) + ($runNumber % 1000)
-          if ($cnRevision -gt 65535) {
-            throw "Computed CN revision is too large: $cnRevision"
+          $cnSuffix = $runNumber % 1000
+          if ($cnSuffix -le 0) {
+            $cnSuffix = 1
           }
-
-          $manifestObject.AssemblyVersion = '{0}.{1}.{2}.{3}' -f `
-            $Matches.major, `
-            $Matches.minor, `
-            $Matches.build, `
-            $cnRevision
+          $manifestObject.AssemblyVersion = "$baseVersion.$cnSuffix"
 
           $newManifestPath = Join-Path $tempDir "$newInternalName.json"
           $manifestObject | ConvertTo-Json -Depth 6 | Set-Content -Path $newManifestPath -Encoding UTF8
