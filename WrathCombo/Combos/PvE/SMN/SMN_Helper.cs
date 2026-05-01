@@ -164,8 +164,8 @@ internal partial class SMN
     internal static bool IsAttunedAny => IsIfritAttuned || IsTitanAttuned || IsGarudaAttuned;
     internal static bool IsDreadwyrmTranceReady => !LevelChecked(SummonBahamut) && IsBahamutReady;
     internal static bool IsBahamutReady => !IsPhoenixReady && !IsSolarBahamutReady;
-    internal static bool IsPhoenixReady => Gauge.AetherFlags.HasFlag((AetherFlags)4) && !Gauge.AetherFlags.HasFlag((AetherFlags)8);
-    internal static bool IsSolarBahamutReady => Gauge.AetherFlags.HasFlag((AetherFlags)8) || Gauge.AetherFlags.HasFlag((AetherFlags)12);
+    internal static bool IsPhoenixReady => Gauge.AetherFlags.HasFlag((Dalamud.Game.ClientState.JobGauge.Enums.AetherFlags)4) && !Gauge.AetherFlags.HasFlag((Dalamud.Game.ClientState.JobGauge.Enums.AetherFlags)8);
+    internal static bool IsSolarBahamutReady => Gauge.AetherFlags.HasFlag((Dalamud.Game.ClientState.JobGauge.Enums.AetherFlags)8) || Gauge.AetherFlags.HasFlag((Dalamud.Game.ClientState.JobGauge.Enums.AetherFlags)12);
     internal static bool DemiExists => CurrentDemiSummon is not DemiSummon.None;
     internal static bool DemiNone => CurrentDemiSummon is DemiSummon.None;
     internal static bool DemiNotPheonix => CurrentDemiSummon is not DemiSummon.Phoenix;
