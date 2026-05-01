@@ -114,12 +114,25 @@ jobs:
             Write-Host "Failed to query upstream published version, fallback to packaged version: $baseVersion"
           }
 
+          $versionParts = $baseVersion.Split('.')
+          if ($versionParts.Length -ne 4) {
+            throw "Expected upstream AssemblyVersion in 4-part format (a.b.c.d), got: $baseVersion"
+          }
+
+          $major = [int]$versionParts[0]
+          $minor = [int]$versionParts[1]
+          $build = [int]$versionParts[2]
+          $revision = [int]$versionParts[3]
+
           $runNumber = [int]($env:GITHUB_RUN_NUMBER ?? '1')
           $cnSuffix = $runNumber % 1000
           if ($cnSuffix -le 0) {
             $cnSuffix = 1
           }
-          $manifestObject.AssemblyVersion = "$baseVersion.$cnSuffix"
+
+          # Keep AssemblyVersion in 4-part format for reliable Dalamud/.NET version comparison.
+          $cnRevision = ($revision * 1000) + $cnSuffix
+          $manifestObject.AssemblyVersion = "$major.$minor.$build.$cnRevision"
 
           $newManifestPath = Join-Path $tempDir "$newInternalName.json"
           $manifestObject | ConvertTo-Json -Depth 6 | Set-Content -Path $newManifestPath -Encoding UTF8
